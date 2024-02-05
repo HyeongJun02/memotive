@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184587847637",
+    "project_id": "memotive-52250",
+    "storage_bucket": "memotive-52250.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184587847637:android:f8744a35faba285a351f5c",
+        "android_client_info": {
+          "package_name": "com.example.memotive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3eOLsh9hh6vIzYmEbsv6Y4_Ipl4bHX3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
