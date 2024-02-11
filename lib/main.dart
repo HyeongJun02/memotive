@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:practice/screen/calendar.dart';
 import 'package:practice/screen/login.dart';
+import 'package:practice/screen/my_home.dart';
 
 var isDarkTheme = false;
 
@@ -9,8 +11,9 @@ void main() => runApp(
     initialRoute: '/',
     routes: {
       '/': (context) => MyApp(),
-      '/login': (context) => LoginScreen(),
-      '/': (context) => MyApp()
+      '/my_home': (context) => MyHome(),
+      '/login': (context) => Login(),
+      '/calendar': (context) => Calendar(),
     }
     //home: MyApp(),
   ),
@@ -26,14 +29,15 @@ class MyApp extends StatelessWidget {
       home: Scaffold( // 상중하로 나눔
 
         appBar: AppBar( // 상단
+          elevation: 0.0,
           backgroundColor: ( isDarkTheme? Colors.black : Colors.white ),
-          leading: IconButton( // leading: 제일 왼쪽 메뉴/내정보 아이콘
-            icon: const Icon(Icons.menu),
-            tooltip: '메뉴',
-            onPressed: () {
-              print('menu click');
-            },
-          ),
+          // leading: IconButton( // leading: 제일 왼쪽 메뉴/내정보 아이콘
+          //   icon: const Icon(Icons.menu),
+          //   tooltip: '메뉴',
+          //   onPressed: () {
+          //     print('menu click');
+          //   },
+          // ),
           title: Row(
             children: [
               Image.asset(
@@ -54,29 +58,79 @@ class MyApp extends StatelessWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.search),
-              tooltip: '검색',
               onPressed: () {
                 print('search click');
               },
             ),
             IconButton(
               icon: const Icon(Icons.person_outline),
-              tooltip: '내 정보',
               onPressed: () {
-                Navigator.pushNamed(context, '/login');
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => const TestScreen())
-                // );
+                Navigator.pushNamed(context, '/my_home');
                 print('login click');
               },
             ),
           ],
         ),
+        drawer: Drawer( // 좌측 상단 메뉴
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color(0xff68C6DF),
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('assets/memologo_0.jpg'),
+                ),
+                accountName: Text('미모티브'),
+                accountEmail: Text('memotivedev@gmail.com'),
+                onDetailsPressed: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.person),
+                iconColor: Color(0xffF0F1A9),
+                title: Text('프로필'),
+                onTap: () {},
+                trailing: Icon(Icons.navigate_next),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                iconColor: Color(0xffF0F1A9),
+                title: Text('설정'),
+                onTap: () {},
+                trailing: Icon(Icons.navigate_next),
+              ),
+            ]
+          )
+        ),
+
+
+
+
+
+
 
         body: SizedBox( // 중단
           child: Column(
             children: [
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '$userName',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' 님 안녕하세요.',
+                    ),
+                  ],
+                ),
+              ),
+              Text('성별 : $userGender'),
+              Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
+              Text('나이 : $userAge살'),
               Row(
                 children: [
                   Container( width: 150, height: 150, margin: EdgeInsets.all(20), color: Colors.red ),
@@ -141,49 +195,58 @@ class MyApp extends StatelessWidget {
           )
         ),
 
+
+
+
+
+
+
         bottomNavigationBar: BottomAppBar( // 하단
+          color: Colors.black,
           child: SizedBox(
             //height: 200,
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.calendar_month),
-                    tooltip: '1',
-                    onPressed: () {
-                      print('1');
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.alarm),
-                    tooltip: '2',
-                    onPressed: () {
-                      print('2');
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.home),
-                    iconSize: 40,
-                    tooltip: '3',
-                    onPressed: () {
-                      print('3');
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.person),
-                    tooltip: '4',
-                    onPressed: () {
-                      print('4');
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.settings),
-                    tooltip: '5',
-                    onPressed: () {
-                      print('5');
-                    },
-                  ),
-                ]
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.calendar_month),
+                  color: Color(0xff68C6DF),
+                  onPressed: () {
+                    print('1');
+                    Navigator.pushNamed(context, '/calendar');
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.alarm),
+                  color: Color(0xff68C6DF),
+                  onPressed: () {
+                    print('2');
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.home),
+                  color: Color(0xff68C6DF),
+                  iconSize: 40,
+                  onPressed: () {
+                    print('3');
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.person),
+                  color: Color(0xff68C6DF),
+                  onPressed: () {
+                    print('4');
+                    Navigator.pushNamed(context, '/login');
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  color: Color(0xff68C6DF),
+                  onPressed: () {
+                    print('5');
+                  },
+                ),
+              ]
             )
           )
         ),
