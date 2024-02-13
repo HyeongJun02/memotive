@@ -131,6 +131,42 @@ class MyApp extends StatelessWidget {
               Text('성별 : $userGender'),
               Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
               Text('나이 : $userAge살'),
+              // ListView(
+              //   children: [
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //     Text('아아'),
+              //   ]
+              // ),
               Row(
                 children: [
                   Container( width: 150, height: 150, margin: EdgeInsets.all(20), color: Colors.red ),
@@ -165,6 +201,12 @@ class MyApp extends StatelessWidget {
                         ),
                       ]
                     )
+                  ),
+                  Spacer(),
+                  Column(
+                    children: [
+                      Icon(Icons.menu),
+                    ],
                   )
                 ]
               ),

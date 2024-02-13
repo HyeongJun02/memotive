@@ -114,8 +114,12 @@ class MyHome extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.asset('../assets/googleLoginLogo.png'),
-                      Text('구글'),
+                      Row(
+                        children: [
+                          Image.asset('../assets/googleLoginLogo.png'),
+                          Image.asset('../assets/googleLoginLogo.png'),
+                        ],
+                      )
                     ],
                   )
                 ],
