@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Calendar extends StatelessWidget {
+  const Calendar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,13 +56,13 @@ class Calendar extends StatelessWidget {
                               onPressed: (){
 
                               },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.orangeAccent
+                              ),
                               child: Icon(
                                 Icons.arrow_forward,
                                 color: Colors.white,
                                 size: 35.0,
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.orangeAccent
                               ),
                             )
                         )
