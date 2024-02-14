@@ -27,10 +27,40 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  HomePage createState() => HomePage();
+  MainPageState createState() => MainPageState();
 }
 
-class HomePage extends State<MainPage> {
+class MainPageState extends State<MainPage> {
+  int _selectedIndex = 2;
+  List<Widget> _WidgetOptions = <Widget>[
+    Text(
+      'First Screen',
+      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Second Screen',
+      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Third Screen',
+      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Fourth Screen',
+      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    ),
+    Text(
+      'Fifth Screen',
+      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   final viewModel = MainViewModel(KakaoLogin());
   //MyApp({Key? key}) : super(key: key); // const 제거
   @override
@@ -210,32 +240,35 @@ class HomePage extends State<MainPage> {
                 ])
               ])
             ]),
+
+        // ============================================================================================== 하단
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.shifting,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.calendar_month_outlined),
                 label: 'My',
-                backgroundColor: Colors.white30),
+                backgroundColor: Colors.lightGreen),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.location_on_outlined),
                 label: 'My',
-                backgroundColor: Colors.white30),
+                backgroundColor: Colors.lightGreen),
             BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),
                 label: 'Home',
-                backgroundColor: Colors.white30),
+                backgroundColor: Colors.lightGreen),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Icons.person_outline),
                 label: 'My',
-                backgroundColor: Colors.white30),
+                backgroundColor: Colors.lightGreen),
             BottomNavigationBarItem(
-                icon: Icon(Icons.menu),
+                icon: Icon(Icons.menu_outlined),
                 label: 'Menu',
-                backgroundColor: Colors.white30),
+                backgroundColor: Colors.lightGreen),
           ],
-          currentIndex: 2,
+          currentIndex: _selectedIndex,
           selectedItemColor: Colors.black,
+          onTap: _onItemTapped,
         )
 /*
       bottomNavigationBar: BottomAppBar(
