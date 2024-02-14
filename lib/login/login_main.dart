@@ -10,8 +10,8 @@ int userAge = 23;
 
 String userName_ = 'Default_';
 
-class MyHome extends StatelessWidget {
-  const MyHome({Key? key}) : super(key: key);
+class LoginMain extends StatelessWidget {
+  const LoginMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -120,13 +120,42 @@ class MyHome extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Image.asset(
-                        'assets/Google_Login.png',
-                        scale: 3,
+                      Container(
+                        // 구글 로그인
+                        width: 75,
+                        height: 75,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/Google_Login.png'),
+                                scale: 1),
+                            //color: Colors.red,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                blurRadius: 5.0,
+                                spreadRadius: -5.0,
+                                offset: const Offset(0, 0),
+                              )
+                            ]),
                       ),
-                      Image.asset(
-                        'assets/Kakao_Login.png',
-                        scale: 3,
+                      Container(
+                        // 카카오 로그인
+                        width: 75,
+                        height: 75,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/Kakao_Login.png'),
+                                scale: 1),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                blurRadius: 5.0,
+                                spreadRadius: -5.0,
+                                offset: const Offset(0, 0),
+                              )
+                            ]),
                       ),
                     ],
                   )

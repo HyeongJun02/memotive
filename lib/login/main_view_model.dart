@@ -1,6 +1,6 @@
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
-import '../login/social_login.dart';
+import 'social_login.dart';
 
 class MainViewModel {
   final SocialLogin _socialLogin;

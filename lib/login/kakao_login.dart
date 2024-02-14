@@ -1,19 +1,21 @@
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
-import 'package:memotive/login/social_login.dart';
+import 'package:memotive/Login/social_login.dart';
 
-class KakaoLogin implements SocialLogin{
+class KakaoLogin implements SocialLogin {
   @override
   Future<bool> login() async {
     try {
       bool isInstalled = await isKakaoTalkInstalled();
-      if (isInstalled) { // 카카오톡 설치된 유저
+      if (isInstalled) {
+        // 카카오톡 설치된 유저
         try {
           await UserApi.instance.loginWithKakaoTalk(); // 카카오톡으로 로그인
           return true;
         } catch (e) {
           return false;
         }
-      } else { // 카카오톡 설치 안 된 유저
+      } else {
+        // 카카오톡 설치 안 된 유저
         try {
           await UserApi.instance.loginWithKakaoAccount(); // 카카오 계정으로 로그인
         } catch (e) {
@@ -25,6 +27,7 @@ class KakaoLogin implements SocialLogin{
       return false;
     }
   }
+
   @override
   Future<bool> logout() async {
     try {

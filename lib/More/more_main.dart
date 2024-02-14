@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 List<String> settings = ['설정1', '설정2', '설정3', '설정4'];
 
-class Settings extends StatelessWidget {
-  const Settings({Key? key}) : super(key: key);
+class MoreMain extends StatelessWidget {
+  const MoreMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

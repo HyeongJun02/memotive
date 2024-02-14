@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
-import 'package:memotive/screen/calendar.dart';
-import 'package:memotive/screen/login.dart';
-import 'package:memotive/screen/main_view_model.dart';
-import 'package:memotive/screen/my_home.dart';
-import 'package:memotive/screen/settings.dart';
 
-import 'login/kakao_login.dart';
+import 'package:memotive/Login/main_view_model.dart';
+
+import 'package:memotive/Login/login_main.dart';
+import 'package:memotive/More/more_main.dart';
+
+import 'Login/kakao_login.dart';
 
 var isDarkTheme = false;
 
@@ -15,10 +15,8 @@ void main() {
   runApp(
     MaterialApp(title: 'Navigator', initialRoute: '/', routes: {
       '/': (context) => MainPage(),
-      '/my_home': (context) => MyHome(),
-      '/login': (context) => Login(),
-      '/calendar': (context) => Calendar(),
-      '/settings': (context) => Settings(),
+      '/login_main': (context) => LoginMain(),
+      '/more_main': (context) => MoreMain(),
     }
         //home: MyApp(),
         ),
@@ -78,7 +76,7 @@ class HomePage extends State<MainPage> {
           IconButton(
             icon: const Icon(Icons.person_outline),
             onPressed: () {
-              Navigator.pushNamed(context, '/my_home');
+              Navigator.pushNamed(context, '/login_main');
               print('login click');
             },
           ),
@@ -125,7 +123,7 @@ class HomePage extends State<MainPage> {
 
               // Image.network(
               //     viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
-              Text('${viewModel.isLogined}'),
+              Text('카카오 로그인 여부: ${viewModel.isLogined}'),
               ElevatedButton(
                 onPressed: () async {
                   await viewModel.login();
@@ -149,10 +147,16 @@ class HomePage extends State<MainPage> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
+                        color: Colors.black,
                       ),
                     ),
                     TextSpan(
                       text: ' 님 안녕하세요.',
+                      style: TextStyle(
+                        // fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
@@ -222,7 +226,6 @@ class HomePage extends State<MainPage> {
                   color: Color(0xff68C6DF),
                   onPressed: () {
                     print('1');
-                    Navigator.pushNamed(context, '/calendar');
                   },
                 ),
                 IconButton(
@@ -238,6 +241,7 @@ class HomePage extends State<MainPage> {
                   iconSize: 40,
                   onPressed: () {
                     print('Home Click');
+                    setState(() {});
                   },
                 ),
                 IconButton(
@@ -245,15 +249,14 @@ class HomePage extends State<MainPage> {
                   color: Color(0xff68C6DF),
                   onPressed: () {
                     print('My Click');
-                    Navigator.pushNamed(context, '/login');
                   },
                 ),
                 IconButton(
                   icon: const Icon(Icons.settings),
                   color: Color(0xff68C6DF),
                   onPressed: () {
-                    print('Settings Click');
-                    Navigator.pushNamed(context, '/settings');
+                    print('More Click');
+                    Navigator.pushNamed(context, '/more_main');
                   },
                 ),
               ]))),
