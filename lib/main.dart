@@ -69,8 +69,8 @@ class MainPageState extends State<MainPage> {
     return Scaffold(
         // 상중하로 나눔
 
+        // ============================================================================================== 상단
         appBar: AppBar(
-          // ============================================================================================== 상단
           elevation: 0.0,
           backgroundColor: (isDarkTheme ? Colors.black : Colors.white),
           // leading: IconButton( // leading: 제일 왼쪽 메뉴/내정보 아이콘
@@ -140,106 +140,105 @@ class MainPageState extends State<MainPage> {
             trailing: Icon(Icons.navigate_next),
           ),
         ])),
-        body: ListView(
-            // ============================================================================================== 중단
-            children: [
-              Column(children: [
-                // Text(
-                //   '내 주변 학원 추천',
-                //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                // ),
 
-                // Image.network(
-                //     viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
-                Text('카카오 로그인 여부: ${viewModel.isLogined}'),
-                ElevatedButton(
-                  onPressed: () async {
-                    await viewModel.login();
-                    setState(() {});
-                  },
-                  child: Text('Login'),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    await viewModel.logout();
-                    setState(() {});
-                  },
-                  child: Text('Logout'),
-                ),
+        // ============================================================================================== 중단
+        body: ListView(children: [
+          Column(children: [
+            // Text(
+            //   '내 주변 학원 추천',
+            //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            // ),
 
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: userName,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      TextSpan(
-                        text: ' 님 안녕하세요.',
-                        style: TextStyle(
-                          // fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
+            // Image.network(
+            //     viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
+            Text('카카오 로그인 여부: ${viewModel.isLogined}'),
+            ElevatedButton(
+              onPressed: () async {
+                await viewModel.login();
+                setState(() {});
+              },
+              child: Text('Login'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await viewModel.logout();
+                setState(() {});
+              },
+              child: Text('Logout'),
+            ),
+
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: userName,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                Text('성별 : $userGender'),
-                Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
-                Text('나이 : $userAge살'),
-                Text('아아'),
-                Text('아아'),
-                Row(children: [
-                  Container(
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(20),
-                      color: Colors.red),
-                  Container(
-                      color: Colors.grey,
-                      child: Column(children: [
-                        Container(
-                            color: Colors.deepPurpleAccent,
-                            child: Text('우산 팔아요\n아아')),
-                        Container(
-                            color: Colors.tealAccent, child: Text('안양시 호계동')),
-                        Container(color: Colors.teal, child: Text('120,000원')),
-                        Container(
-                            color: Colors.yellow,
-                            child: Row(children: [
-                              Container(child: Icon(Icons.favorite_border)),
-                              Container(child: Text('10')),
-                            ])),
-                      ])),
-                  Spacer(),
-                  Column(
-                    children: [
-                      Icon(Icons.menu),
-                    ],
-                  )
-                ]),
-
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        print('글자 클릭');
-                      },
-                      style: ButtonStyle(),
-                      child: Text('글자')),
-                  ElevatedButton(
-                      onPressed: () {
-                        print('글자 클릭');
-                      },
-                      style: ButtonStyle(),
-                      child: Text('글자')),
-                ])
-              ])
+                  TextSpan(
+                    text: ' 님 안녕하세요.',
+                    style: TextStyle(
+                      // fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Text('성별 : $userGender'),
+            Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
+            Text('나이 : $userAge살'),
+            Text('아아'),
+            Text('아아'),
+            Row(children: [
+              Container(
+                  width: 150,
+                  height: 150,
+                  margin: EdgeInsets.all(20),
+                  color: Colors.red),
+              Container(
+                  color: Colors.grey,
+                  child: Column(children: [
+                    Container(
+                        color: Colors.deepPurpleAccent,
+                        child: Text('우산 팔아요\n아아')),
+                    Container(color: Colors.tealAccent, child: Text('안양시 호계동')),
+                    Container(color: Colors.teal, child: Text('120,000원')),
+                    Container(
+                        color: Colors.yellow,
+                        child: Row(children: [
+                          Container(child: Icon(Icons.favorite_border)),
+                          Container(child: Text('10')),
+                        ])),
+                  ])),
+              Spacer(),
+              Column(
+                children: [
+                  Icon(Icons.menu),
+                ],
+              )
             ]),
+
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              ElevatedButton(
+                  onPressed: () {
+                    print('글자 클릭');
+                  },
+                  style: ButtonStyle(),
+                  child: Text('글자')),
+              ElevatedButton(
+                  onPressed: () {
+                    print('글자 클릭');
+                  },
+                  style: ButtonStyle(),
+                  child: Text('글자')),
+            ])
+          ])
+        ]),
 
         // ============================================================================================== 하단
         bottomNavigationBar: BottomNavigationBar(
