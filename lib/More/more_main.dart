@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
 
+import '../Login/login_main.dart';
+
 class MoreMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
