@@ -6,7 +6,6 @@ import 'package:memotive/navigation_service.dart';
 
 import '../bottom_navigation_bar.dart';
 import '../Login/login_main.dart';
-import '../More/more_main.dart';
 import '../Login/kakao_login.dart';
 
 var isDarkTheme = false;
@@ -44,13 +43,6 @@ class MainPageState extends State<HomeMain> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: (isDarkTheme ? Colors.black : Colors.white),
-        // leading: IconButton( // leading: 제일 왼쪽 메뉴/내정보 아이콘
-        //   icon: const Icon(Icons.menu),
-        //   tooltip: '메뉴',
-        //   onPressed: () {
-        //     print('menu click');
-        //   },
-        // ),
         title: Row(children: [
           Image.asset(
             'assets/memologo_0.jpg',
