@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
 
-class MoreMain extends StatelessWidget {
+class MyMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
