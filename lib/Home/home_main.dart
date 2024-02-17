@@ -32,6 +32,8 @@ class HomeMain extends StatefulWidget {
 
 class MainPageState extends State<HomeMain> {
   final viewModel = MainViewModel(KakaoLogin());
+  List<String> citys = ['서울', '인천', '부산', '대구'];
+
   //MyApp({Key? key}) : super(key: key); // const 제거
   @override
   Widget build(BuildContext context) {
@@ -59,12 +61,12 @@ class MainPageState extends State<HomeMain> {
           )
         ]),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              print('search click');
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.search),
+          //   onPressed: () {
+          //     print('search click');
+          //   },
+          // ),
           IconButton(
             icon: const Icon(Icons.person_outline),
             onPressed: () {
@@ -107,6 +109,20 @@ class MainPageState extends State<HomeMain> {
       // ============================================================================================== 중단
       body: ListView(children: [
         Column(children: [
+          // GridView.builder(
+          //   itemCount: citys.length,
+          //   itemBuilder: (context, index) {
+          //     return Card(
+          //         child: Column(children: [
+          //       Text(citys[index]),
+          //       //Image.asset('assets/images/Kakao_Login')
+          //     ]));
+          //   },
+          //   scrollDirection: Axis.horizontal,
+          //   gridDelegate:
+          //       SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          // ),
+
           // Text(
           //   '내 주변 학원 추천',
           //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

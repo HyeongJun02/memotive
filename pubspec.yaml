@@ -63,7 +63,7 @@ dev_dependencies:
 flutter:
   assets:
     # assets 폴더 안의 내용을 쓰겠다.
-    - assets/
+    - assets/images/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
