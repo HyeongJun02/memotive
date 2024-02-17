@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'Home/home_main.dart';
-import 'Login/login_main.dart';
-import 'More/more_main.dart';
 
 void main() {
   KakaoSdk.init(nativeAppKey: 'b248c8d60ac3e422235ae6a0b0440545');
@@ -17,8 +15,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeMain(),
-        '/login_main': (context) => LoginMain(),
-        '/more_main': (context) => MoreMain(),
       },
     );
   }
