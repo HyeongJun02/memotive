@@ -14,7 +14,7 @@ class MyMain extends StatelessWidget {
       ),
       // 하단 네비게이션 바 추가
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 4,
+        currentIndex: 3,
         onItemTapped: (index) {
           NavigationService.navigateToScreen(context, index);
         },

@@ -1,35 +1,53 @@
 import 'package:flutter/material.dart';
 import 'Home/home_main.dart';
 import 'More/more_main.dart';
-import 'My/my_main.dart';
 
 class NavigationService {
   static void navigateToScreen(BuildContext context, int index) {
-    // BottomNavigationBar의 index에 따라 화면 전환
+    Widget destinationWidget;
+
     switch (index) {
       case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyMain()));
+        destinationWidget = MoreMain();
         break;
       case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyMain()));
+        destinationWidget = MoreMain();
         break;
       case 2:
-        // Home 화면으로 이동
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomeMain()));
+        destinationWidget = HomeMain();
         break;
       case 3:
-        // My 화면으로 이동
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyMain()));
+        destinationWidget = MoreMain();
         break;
       case 4:
-        // More 화면으로 이동
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MoreMain()));
+        destinationWidget = MoreMain();
         break;
+      default:
+        destinationWidget = HomeMain(); // 기본값 설정
     }
+
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (BuildContext context, Animation<double> animation1,
+            Animation<double> animation2) {
+          return destinationWidget;
+        },
+        transitionsBuilder: (BuildContext context, Animation<double> animation1,
+            Animation<double> animation2, Widget child) {
+          const begin = 0.0;
+          const end = 1.0;
+          var fadeTween = Tween<double>(begin: begin, end: end);
+
+          var fadeAnimation = fadeTween.animate(animation1);
+
+          return FadeTransition(
+            opacity: fadeAnimation,
+            child: child,
+          );
+        },
+        transitionDuration: Duration(milliseconds: 200),
+      ),
+    );
   }
 }
