@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:memotive/1/1_main.dart';
+import 'package:memotive/2/2_main.dart';
 import 'package:memotive/My/my_main.dart';
 import 'Home/home_main.dart';
 import 'More/more_main.dart';
@@ -9,10 +11,10 @@ class NavigationService {
 
     switch (index) {
       case 0:
-        destinationWidget = MoreMain();
+        destinationWidget = FirstMain();
         break;
       case 1:
-        destinationWidget = MoreMain();
+        destinationWidget = SecondMain();
         break;
       case 2:
         destinationWidget = HomeMain();

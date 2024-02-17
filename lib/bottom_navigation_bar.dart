@@ -18,27 +18,31 @@ class CustomBottomNavigationBar extends StatelessWidget {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_month_outlined),
-          label: 'My',
+          activeIcon: Icon(Icons.calendar_month),
+          label: 'First',
           backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.location_on_outlined),
-          label: 'My',
+          activeIcon: Icon(Icons.location_on),
+          label: 'Second',
           backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
-          label: 'Home',
+          activeIcon: Icon(Icons.home),
+          label: '홈',
           backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
-          label: 'My',
+          activeIcon: Icon(Icons.person),
+          label: '내 정보',
           backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.menu_outlined),
-          label: 'Menu',
+          label: '메뉴',
           backgroundColor: bottomBarColor,
         ),
       ],
