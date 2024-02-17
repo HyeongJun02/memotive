@@ -10,6 +10,44 @@ class MyMain extends StatelessWidget {
       appBar: AppBar(
         title: Text('My Main'),
       ),
+      // body: CustomScrollView(slivers: [
+      //   SliverAppBar(
+      //       leading: IconButton(
+      //         icon: Icon(Icons.expand),
+      //         onPressed: () {},
+      //       ),
+      //       expandedHeight: 200,
+      //       floating: true,
+      //       pinned: false,
+      //       snap: true,
+      //       elevation: 50,
+      //       backgroundColor: Colors.pink,
+      //       flexibleSpace: Container(
+      //         decoration: BoxDecoration(
+      //             image: DecorationImage(
+      //                 image: AssetImage('assets/image/memologo_0.jpg'),
+      //                 fit: BoxFit.fill)),
+      //       ),
+      //       title: Text('AppBar Title'),
+      //       actions: <Widget>[
+      //         IconButton(
+      //           icon: const Icon(Icons.add_alert),
+      //           onPressed: () {},
+      //         ),
+      //         IconButton(
+      //           icon: const Icon(Icons.phone),
+      //           onPressed: () {},
+      //         ),
+      //       ]),
+      //   SliverFixedExtentList(
+      //       delegate:
+      //           SliverChildBuilderDelegate((BuildContext context, int index) {
+      //         return ListTile(
+      //           title: Text('Hello World Item $index'),
+      //         );
+      //       }),
+      //       itemExtent: 50.0)
+      // ]
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
