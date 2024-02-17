@@ -7,10 +7,10 @@ class MyMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu Main'),
+        title: Text('My Main'),
       ),
       body: Center(
-        child: Text('Menu Main Content'),
+        child: Text('My Main Content'),
       ),
       // 하단 네비게이션 바 추가
       bottomNavigationBar: CustomBottomNavigationBar(

@@ -4,6 +4,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onItemTapped;
 
+  static const Color bottomBarColor = Color.fromARGB(255, 255, 136, 0);
+
   const CustomBottomNavigationBar({
     required this.currentIndex,
     required this.onItemTapped,
@@ -12,32 +14,32 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      type: BottomNavigationBarType.shifting,
+      type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_month_outlined),
           label: 'My',
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.location_on_outlined),
           label: 'My',
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
           label: 'Home',
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
           label: 'My',
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: bottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.menu_outlined),
           label: 'Menu',
-          backgroundColor: Colors.lightGreen,
+          backgroundColor: bottomBarColor,
         ),
       ],
       currentIndex: currentIndex,
