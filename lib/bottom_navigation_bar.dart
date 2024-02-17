@@ -4,6 +4,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onItemTapped;
 
+  // 현재 사용 X
   static const Color bottomBarColor = Color.fromARGB(255, 255, 136, 0);
 
   const CustomBottomNavigationBar({
