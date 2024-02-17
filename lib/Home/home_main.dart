@@ -45,20 +45,22 @@ class MainPageState extends State<HomeMain> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: (isDarkTheme ? Colors.black : Colors.white),
-        title: Row(children: [
+        centerTitle: true, // title 중앙 정렬
+        // 타이틀 로고
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Image.asset(
             'assets/images/memologo_0.jpg',
             width: 40,
             height: 40,
             fit: BoxFit.fitHeight,
           ),
-          Text(
-            style: TextStyle(
-              fontSize: 23,
-              color: (isDarkTheme ? Colors.white : Colors.black),
-            ),
-            'memotive',
-          )
+          // Text(
+          //   style: TextStyle(
+          //     fontSize: 23,
+          //     color: (isDarkTheme ? Colors.white : Colors.black),
+          //   ),
+          //   'memotive',
+          // )
         ]),
         actions: [
           // IconButton(
