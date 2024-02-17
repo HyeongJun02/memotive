@@ -134,7 +134,8 @@ class LoginMain extends StatelessWidget {
                         height: 75,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/Google_Login.png'),
+                                image: AssetImage(
+                                    'assets/images/Google_Login.png'),
                                 scale: 1),
                             //color: Colors.red,
                             shape: BoxShape.circle,
@@ -153,7 +154,8 @@ class LoginMain extends StatelessWidget {
                         height: 75,
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/Kakao_Login.png'),
+                                image:
+                                    AssetImage('assets/images/Kakao_Login.png'),
                                 scale: 1),
                             shape: BoxShape.circle,
                             boxShadow: [

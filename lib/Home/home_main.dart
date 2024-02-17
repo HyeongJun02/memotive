@@ -45,7 +45,7 @@ class MainPageState extends State<HomeMain> {
         backgroundColor: (isDarkTheme ? Colors.black : Colors.white),
         title: Row(children: [
           Image.asset(
-            'assets/memologo_0.jpg',
+            'assets/images/memologo_0.jpg',
             width: 40,
             height: 40,
             fit: BoxFit.fitHeight,
@@ -82,7 +82,7 @@ class MainPageState extends State<HomeMain> {
             color: Color(0xff68C6DF),
           ),
           currentAccountPicture: CircleAvatar(
-            backgroundImage: AssetImage('assets/memologo_0.jpg'),
+            backgroundImage: AssetImage('assets/images/memologo_0.jpg'),
           ),
           accountName: Text('미모티브'),
           accountEmail: Text('memotivedev@gmail.com'),
