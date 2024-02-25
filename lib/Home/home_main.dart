@@ -31,7 +31,7 @@ class HomeMain extends StatefulWidget {
 }
 
 class MainPageState extends State<HomeMain> {
-  final viewModel = MainViewModel(KakaoLogin());
+  // final viewModel = MainViewModel(KakaoLogin());
   List<String> citys = ['서울', '인천', '부산', '대구'];
 
   //MyApp({Key? key}) : super(key: key); // const 제거
@@ -130,23 +130,23 @@ class MainPageState extends State<HomeMain> {
           //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           // ),
 
+          // Kakao Login
           // Image.network(
           //     viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
-          Text('카카오 로그인 여부: ${viewModel.isLogined}'),
-          ElevatedButton(
-            onPressed: () async {
-              await viewModel.login();
-              setState(() {});
-            },
-            child: Text('Login'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              await viewModel.logout();
-              setState(() {});
-            },
-            child: Text('Logout'),
-          ),
+          // ElevatedButton(
+          //   onPressed: () async {
+          //     await viewModel.login();
+          //     setState(() {});
+          //   },
+          //   child: Text('Login'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () async {
+          //     await viewModel.logout();
+          //     setState(() {});
+          //   },
+          //   child: Text('Logout'),
+          // ),
 
           Text.rich(TextSpan(
               text: userName,
