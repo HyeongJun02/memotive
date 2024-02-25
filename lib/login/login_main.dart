@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
 String userName = 'Default';
 String userGender = 'male'; // male or female
@@ -9,6 +11,11 @@ int userBirthDay = 3;
 int userAge = 23;
 
 String userName_ = 'Default_';
+
+void main() {
+  KakaoSdk.init(nativeAppKey: '81c41de1e1e8164248f5ce3556237410');
+  runApp(LoginMain());
+}
 
 class LoginMain extends StatelessWidget {
   const LoginMain({Key? key}) : super(key: key);
@@ -128,44 +135,85 @@ class LoginMain extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        // 구글 로그인
-                        width: 75,
-                        height: 75,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/Google_Login.png'),
-                                scale: 1),
-                            //color: Colors.red,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                blurRadius: 5.0,
-                                spreadRadius: -5.0,
-                                offset: const Offset(0, 0),
-                              )
-                            ]),
+                      // 구글 로그인
+                      GestureDetector(
+                        onTap: () {
+                          print('ddd');
+                        },
+                        child: Container(
+                          width: 75,
+                          height: 75,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Google_Login.png'),
+                                  scale: 1),
+                              //color: Colors.red,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  blurRadius: 5.0,
+                                  spreadRadius: -5.0,
+                                  offset: const Offset(0, 0),
+                                )
+                              ]),
+                        ),
                       ),
-                      Container(
-                        // 카카오 로그인
-                        width: 75,
-                        height: 75,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/Kakao_Login.png'),
-                                scale: 1),
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                blurRadius: 5.0,
-                                spreadRadius: -5.0,
-                                offset: const Offset(0, 0),
-                              )
-                            ]),
+                      // 카카오 로그인
+                      GestureDetector(
+                        onTap: () async {
+                          print('Kakao Login Button');
+                          // 카카오톡 설치 여부 확인
+// 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
+                          if (await isKakaoTalkInstalled()) {
+                            try {
+                              await UserApi.instance.loginWithKakaoTalk();
+                              print('카카오톡으로 로그인 성공');
+                            } catch (error) {
+                              print('카카오톡으로 로그인 실패 $error');
+
+                              // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
+                              // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
+                              if (error is PlatformException &&
+                                  error.code == 'CANCELED') {
+                                return;
+                              }
+                              // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인
+                              try {
+                                await UserApi.instance.loginWithKakaoAccount();
+                                print('카카오계정으로 로그인 성공');
+                              } catch (error) {
+                                print('카카오계정으로 로그인 실패 $error');
+                              }
+                            }
+                          } else {
+                            try {
+                              await UserApi.instance.loginWithKakaoAccount();
+                              print('카카오계정으로 로그인 성공');
+                            } catch (error) {
+                              print('카카오계정으로 로그인 실패 $error');
+                            }
+                          }
+                        },
+                        child: Container(
+                          width: 75,
+                          height: 75,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Kakao_Login.png'),
+                                  scale: 1),
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.1),
+                                  blurRadius: 5.0,
+                                  spreadRadius: -5.0,
+                                  offset: const Offset(0, 0),
+                                )
+                              ]),
+                        ),
                       ),
                     ],
                   )
