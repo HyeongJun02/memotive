@@ -148,28 +148,23 @@ class MainPageState extends State<HomeMain> {
             child: Text('Logout'),
           ),
 
-          RichText(
-            text: TextSpan(
+          Text.rich(TextSpan(
+              text: userName,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
               children: [
-                TextSpan(
-                  text: userName,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
                 TextSpan(
                   text: ' 님 안녕하세요.',
                   style: TextStyle(
-                    // fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    fontWeight: FontWeight.normal,
                     color: Colors.black,
                   ),
-                ),
-              ],
-            ),
-          ),
+                )
+              ])),
           Text('성별 : $userGender'),
           Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
           Text('나이 : $userAge살'),
