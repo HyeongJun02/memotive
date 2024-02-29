@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:memotive/1/1_main.dart';
-import 'package:memotive/2/2_main.dart';
+import 'package:memotive/Favorite/favorite_main.dart';
+import 'package:memotive/Search/search_main.dart';
 import 'package:memotive/My/my_main.dart';
 import 'Home/home_main.dart';
-import 'More/more_main.dart';
+import 'Community/community_main.dart';
 
 class NavigationService {
   static void navigateToScreen(BuildContext context, int index) {
@@ -11,19 +11,19 @@ class NavigationService {
 
     switch (index) {
       case 0:
-        destinationWidget = FirstMain();
-        break;
-      case 1:
-        destinationWidget = SecondMain();
-        break;
-      case 2:
         destinationWidget = HomeMain();
         break;
+      case 1:
+        destinationWidget = SearchMain();
+        break;
+      case 2:
+        destinationWidget = CommunityMain();
+        break;
       case 3:
-        destinationWidget = MyMain();
+        destinationWidget = FavoriteMain();
         break;
       case 4:
-        destinationWidget = MoreMain();
+        destinationWidget = MyMain();
         break;
       default:
         destinationWidget = HomeMain(); // 기본값 설정

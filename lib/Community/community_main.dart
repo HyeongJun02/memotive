@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
 
-class MoreMain extends StatelessWidget {
+class CommunityMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Menu Main'),
+        title: Text('CommunityMain'),
       ),
       body: Center(
-        child: Text('Menu Main Content'),
+        child: Text('CommunityMain Content'),
       ),
       // 하단 네비게이션 바 추가
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 4,
+        currentIndex: 2,
         onItemTapped: (index) {
           NavigationService.navigateToScreen(context, index);
         },

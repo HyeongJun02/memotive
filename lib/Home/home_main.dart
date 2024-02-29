@@ -219,7 +219,7 @@ class MainPageState extends State<HomeMain> {
       // ============================================================================================== 하단
       // 하단 네비게이션 바 추가
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 2,
+        currentIndex: 0,
         onItemTapped: (index) {
           NavigationService.navigateToScreen(context, index);
         },

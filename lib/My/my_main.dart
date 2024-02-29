@@ -121,7 +121,7 @@ class MyMain extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 3,
+        currentIndex: 4,
         onItemTapped: (index) {
           NavigationService.navigateToScreen(context, index);
         },
