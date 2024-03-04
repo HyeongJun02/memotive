@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.app.memotive"
+    namespace "com.example.memotive"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
