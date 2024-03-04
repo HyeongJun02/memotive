@@ -26,6 +26,15 @@ class CategoryItem extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(10),
       ),
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Colors.white, // Title의 텍스트 색상을 원하는 대로 지정하세요.
+          ),
+        ),
+      ),
     );
   }
 }
@@ -158,11 +167,11 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(title: 'Category 1', color: Colors.black),
-                    CategoryItem(title: 'Category 2', color: Colors.red),
-                    CategoryItem(title: 'Category 3', color: Colors.red),
-                    CategoryItem(title: 'Category 4', color: Colors.red),
-                    CategoryItem(title: 'Category 5', color: Colors.red),
+                    CategoryItem(title: '국어', color: Colors.grey),
+                    CategoryItem(title: '영어', color: Colors.grey),
+                    CategoryItem(title: '수학', color: Colors.grey),
+                    CategoryItem(title: '사회탐구', color: Colors.grey),
+                    CategoryItem(title: '과학탐구', color: Colors.grey),
                   ],
                 ),
               ])),
@@ -185,11 +194,11 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(title: 'Category 1', color: Colors.black),
-                    CategoryItem(title: 'Category 2', color: Colors.red),
-                    CategoryItem(title: 'Category 3', color: Colors.red),
-                    CategoryItem(title: 'Category 4', color: Colors.red),
-                    CategoryItem(title: 'Category 5', color: Colors.red),
+                    CategoryItem(title: '한국어', color: Colors.grey),
+                    CategoryItem(title: '영어', color: Colors.grey),
+                    CategoryItem(title: '일본어', color: Colors.grey),
+                    CategoryItem(title: '프랑스어', color: Colors.grey),
+                    CategoryItem(title: '러시아어', color: Colors.grey),
                   ],
                 ),
               ])),
@@ -212,11 +221,11 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(title: 'Category 1', color: Colors.black),
-                    CategoryItem(title: 'Category 2', color: Colors.red),
-                    CategoryItem(title: 'Category 3', color: Colors.red),
-                    CategoryItem(title: 'Category 4', color: Colors.red),
-                    CategoryItem(title: 'Category 5', color: Colors.red),
+                    CategoryItem(title: '개발', color: Colors.grey),
+                    CategoryItem(title: '디자인', color: Colors.grey),
+                    CategoryItem(title: '마케팅', color: Colors.grey),
+                    CategoryItem(title: '회계', color: Colors.grey),
+                    CategoryItem(title: '기획', color: Colors.grey),
                   ],
                 ),
               ])),
