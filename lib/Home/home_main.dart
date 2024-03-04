@@ -10,18 +10,25 @@ import '../Login/kakao_login.dart';
 
 var isDarkTheme = false;
 
-// void main() {
-//   KakaoSdk.init(nativeAppKey: 'b248c8d60ac3e422235ae6a0b0440545');
-//   runApp(
-//     MaterialApp(title: 'Navigator', initialRoute: '/', routes: {
-//       '/': (context) => MainPage(),
-//       '/login_main': (context) => LoginMain(),
-//       '/more_main': (context) => MoreMain(),
-//     }
-//         //home: MyApp(),
-//         ),
-//   );
-// }
+// 과목
+class CategoryItem extends StatelessWidget {
+  final String title;
+  final Color color;
+
+  const CategoryItem({required this.title, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 65,
+      height: 65,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
+  }
+}
 
 class HomeMain extends StatefulWidget {
   const HomeMain({Key? key});
@@ -31,10 +38,8 @@ class HomeMain extends StatefulWidget {
 }
 
 class MainPageState extends State<HomeMain> {
-  // final viewModel = MainViewModel(KakaoLogin());
-  List<String> citys = ['서울', '인천', '부산', '대구'];
+  String? searchText;
 
-  //MyApp({Key? key}) : super(key: key); // const 제거
   @override
   Widget build(BuildContext context) {
     // MaterialApp : Material 테마 (+ Custom)
@@ -110,110 +115,180 @@ class MainPageState extends State<HomeMain> {
 
       // ============================================================================================== 중단
       body: ListView(children: [
-        Column(children: [
-          // GridView.builder(
-          //   itemCount: citys.length,
-          //   itemBuilder: (context, index) {
-          //     return Card(
-          //         child: Column(children: [
-          //       Text(citys[index]),
-          //       //Image.asset('assets/images/Kakao_Login')
-          //     ]));
-          //   },
-          //   scrollDirection: Axis.horizontal,
-          //   gridDelegate:
-          //       SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-          // ),
-
-          // Text(
-          //   '내 주변 학원 추천',
-          //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          // ),
-
-          // Kakao Login
-          // Image.network(
-          //     viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
-          // ElevatedButton(
-          //   onPressed: () async {
-          //     await viewModel.login();
-          //     setState(() {});
-          //   },
-          //   child: Text('Login'),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () async {
-          //     await viewModel.logout();
-          //     setState(() {});
-          //   },
-          //   child: Text('Logout'),
-          // ),
-
-          Text.rich(TextSpan(
-              text: userName,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+        Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(children: [
+              // 검색
+              SearchBar(
+                padding: MaterialStateProperty.all(
+                  EdgeInsets.fromLTRB(20, 0, 20, 0),
+                ),
+                trailing: [Icon(Icons.search)],
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                onSubmitted: (value) {
+                  setState(() => searchText = value);
+                  print('Input Text = $searchText');
+                },
               ),
-              children: [
-                TextSpan(
-                  text: ' 님 안녕하세요.',
+
+              Container(height: 20),
+
+              //광고
+              Container(
+                height: 100,
+                width: 400,
+                color: Colors.amber,
+              ),
+
+              Container(height: 20),
+
+              // 기초과목
+              Container(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("   기초과목   ",
+                        style: TextStyle(fontSize: 15, color: Colors.black)),
+                    Text("   더보기   ",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                  ],
+                ),
+                Container(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem(title: 'Category 1', color: Colors.black),
+                    CategoryItem(title: 'Category 2', color: Colors.red),
+                    CategoryItem(title: 'Category 3', color: Colors.red),
+                    CategoryItem(title: 'Category 4', color: Colors.red),
+                    CategoryItem(title: 'Category 5', color: Colors.red),
+                  ],
+                ),
+              ])),
+
+              Container(height: 20),
+
+              // 어학
+              Container(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("   어학   ",
+                        style: TextStyle(fontSize: 15, color: Colors.black)),
+                    Text("   더보기   ",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                  ],
+                ),
+                Container(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem(title: 'Category 1', color: Colors.black),
+                    CategoryItem(title: 'Category 2', color: Colors.red),
+                    CategoryItem(title: 'Category 3', color: Colors.red),
+                    CategoryItem(title: 'Category 4', color: Colors.red),
+                    CategoryItem(title: 'Category 5', color: Colors.red),
+                  ],
+                ),
+              ])),
+
+              Container(height: 20),
+
+              // 예술
+              Container(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("   예술   ",
+                        style: TextStyle(fontSize: 15, color: Colors.black)),
+                    Text("   더보기   ",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                  ],
+                ),
+                Container(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem(title: 'Category 1', color: Colors.black),
+                    CategoryItem(title: 'Category 2', color: Colors.red),
+                    CategoryItem(title: 'Category 3', color: Colors.red),
+                    CategoryItem(title: 'Category 4', color: Colors.red),
+                    CategoryItem(title: 'Category 5', color: Colors.red),
+                  ],
+                ),
+              ])),
+
+              Container(height: 20),
+
+              Text.rich(TextSpan(
+                  text: userName,
                   style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+                  children: [
+                    TextSpan(
+                      text: ' 님 안녕하세요.',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black,
+                      ),
+                    )
+                  ])),
+              Text('성별 : $userGender'),
+              Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
+              Text('나이 : $userAge살'),
+              Text('아아'),
+              Text('아아'),
+              Row(children: [
+                Container(
+                    width: 150,
+                    height: 150,
+                    margin: EdgeInsets.all(20),
+                    color: Colors.red),
+                Container(
+                    color: Colors.grey,
+                    child: Column(children: [
+                      Container(
+                          color: Colors.deepPurpleAccent,
+                          child: Text('우산 팔아요\n아아')),
+                      Container(
+                          color: Colors.tealAccent, child: Text('안양시 호계동')),
+                      Container(color: Colors.teal, child: Text('120,000원')),
+                      Container(
+                          color: Colors.yellow,
+                          child: Row(children: [
+                            Container(child: Icon(Icons.favorite_border)),
+                            Container(child: Text('10')),
+                          ])),
+                    ])),
+                Spacer(),
+                Column(
+                  children: [
+                    Icon(Icons.menu),
+                  ],
                 )
-              ])),
-          Text('성별 : $userGender'),
-          Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
-          Text('나이 : $userAge살'),
-          Text('아아'),
-          Text('아아'),
-          Row(children: [
-            Container(
-                width: 150,
-                height: 150,
-                margin: EdgeInsets.all(20),
-                color: Colors.red),
-            Container(
-                color: Colors.grey,
-                child: Column(children: [
-                  Container(
-                      color: Colors.deepPurpleAccent,
-                      child: Text('우산 팔아요\n아아')),
-                  Container(color: Colors.tealAccent, child: Text('안양시 호계동')),
-                  Container(color: Colors.teal, child: Text('120,000원')),
-                  Container(
-                      color: Colors.yellow,
-                      child: Row(children: [
-                        Container(child: Icon(Icons.favorite_border)),
-                        Container(child: Text('10')),
-                      ])),
-                ])),
-            Spacer(),
-            Column(
-              children: [
-                Icon(Icons.menu),
-              ],
-            )
-          ]),
-
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-                onPressed: () {
-                  print('글자 클릭');
-                },
-                style: ButtonStyle(),
-                child: Text('글자')),
-            ElevatedButton(
-                onPressed: () {
-                  print('글자 클릭');
-                },
-                style: ButtonStyle(),
-                child: Text('글자')),
-          ])
-        ])
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                ElevatedButton(
+                    onPressed: () {
+                      print('글자 클릭');
+                    },
+                    style: ButtonStyle(),
+                    child: Text('글자')),
+                ElevatedButton(
+                    onPressed: () {
+                      print('글자 클릭');
+                    },
+                    style: ButtonStyle(),
+                    child: Text('글자')),
+              ])
+            ])),
       ]),
 
       // ============================================================================================== 하단
