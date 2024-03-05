@@ -153,7 +153,7 @@ class MainPageState extends State<HomeMain> {
                             }
                           },
                           child: Card(
-                            color: Colors.grey[700],
+                            color: Colors.grey[200],
                             child: Center(
                               child: Text(
                                 '광고 ${index + 1}',
@@ -197,10 +197,10 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     Text("기초과목",
                         style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold)),
-                    Text("더보기",
+                    Text("더보기 >",
                         style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
@@ -233,8 +233,6 @@ class MainPageState extends State<HomeMain> {
               ])),
 
               Container(height: 20),
-
-              // 어학
               Container(
                   child: Column(children: [
                 Row(
@@ -242,10 +240,10 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     Text("어학",
                         style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 18,
                             color: Colors.black,
                             fontWeight: FontWeight.bold)),
-                    Text("더보기",
+                    Text("더보기 >",
                         style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
@@ -254,68 +252,23 @@ class MainPageState extends State<HomeMain> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CategoryItem(
-                        title: '한국어',
+                        title: '국어',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
-                        title: '토익',
+                        title: '영어',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
-                        title: '컴퓨터',
+                        title: '수학',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
-                        title: '일본어',
+                        title: '사회탐구',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
-                        title: '중국어',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                  ],
-                ),
-              ])),
-
-              Container(height: 20),
-
-              // 예술
-              Container(
-                  child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("예술",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold)),
-                    Text("더보기",
-                        style: TextStyle(fontSize: 10, color: Colors.grey)),
-                  ],
-                ),
-                Container(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CategoryItem(
-                        title: '개발',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '디자인',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '마케팅',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '가',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '나',
+                        title: '과학탐구',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                   ],
