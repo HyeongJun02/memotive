@@ -50,6 +50,18 @@ class CategoryItem extends StatelessWidget {
                   ),
                 ),
               ),
+            // 작은 텍스트 표시 부분
+            Positioned(
+              bottom: 2,
+              right: 2,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
           ],
         ),
       ),
