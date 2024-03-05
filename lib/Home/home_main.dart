@@ -2,40 +2,12 @@ import 'package:flutter/material.dart';
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
 import 'package:memotive/navigation_service.dart';
+import 'CategoryItem.dart';
 
 import '../bottom_navigation_bar.dart';
 import '../Login/login_main.dart';
 
 var isDarkTheme = false;
-
-// 과목
-class CategoryItem extends StatelessWidget {
-  final String title;
-  final Color color;
-
-  const CategoryItem({required this.title, required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 65,
-      height: 65,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Align(
-        alignment: Alignment.center,
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Colors.white, // Title의 텍스트 색상을 원하는 대로 지정하세요.
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class HomeMain extends StatefulWidget {
   const HomeMain({Key? key});
@@ -46,7 +18,19 @@ class HomeMain extends StatefulWidget {
 
 class MainPageState extends State<HomeMain> {
   String? searchText;
-  ScrollController _scrollController = ScrollController();
+  PageController _pageController = PageController();
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      setState(() {
+        _currentPage = _pageController.page!.round();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // MaterialApp : Material 테마 (+ Custom)
@@ -66,21 +50,8 @@ class MainPageState extends State<HomeMain> {
             height: 40,
             fit: BoxFit.fitHeight,
           ),
-          // Text(
-          //   style: TextStyle(
-          //     fontSize: 23,
-          //     color: (isDarkTheme ? Colors.white : Colors.black),
-          //   ),
-          //   'memotive',
-          // )
         ]),
         actions: [
-          // IconButton(
-          //   icon: const Icon(Icons.search),
-          //   onPressed: () {
-          //     print('search click');
-          //   },
-          // ),
           IconButton(
             icon: const Icon(Icons.person_outline),
             onPressed: () {
@@ -143,24 +114,68 @@ class MainPageState extends State<HomeMain> {
               //광고
               Container(
                 height: 150,
-                child: ListView.builder(
-                  controller: _scrollController,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 4, // 원하는 컨테이너 상자 수로 변경
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 371,
-                      margin: EdgeInsets.only(right: 10),
-                      color: Colors.yellow,
-                      child: Center(
-                        child: Text(
-                          '광고 ${index + 1}',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    );
-                  },
+                child: Stack(
+                  children: [
+                    PageView.builder(
+                      controller: _pageController,
+                      itemCount: 4,
+                      onPageChanged: (index) {
+                        setState(() {
+                          _currentPage = index;
+                        });
+                      },
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            // 각 광고를 클릭했을 때 다른 동작을 수행하도록 설정
+                            switch (index) {
+                              case 0:
+                                // 첫 번째 광고를 클릭했을 때의 동작
+                                break;
+                              case 1:
+                                // 두 번째 광고를 클릭했을 때의 동작
+                                break;
+                              case 2:
+                                // 세 번째 광고를 클릭했을 때의 동작
+                                break;
+                              case 3:
+                                // 네 번째 광고를 클릭했을 때의 동작
+                                break;
+                            }
+                          },
+                          child: Card(
+                            color: Colors.yellow,
+                            child: Center(
+                              child: Text(
+                                '광고 ${index + 1}',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
+              ),
+
+              Container(height: 10),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(4, (index) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 2),
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentPage == index
+                          ? Colors.grey
+                          : Colors.grey[300],
+                    ),
+                  );
+                }),
               ),
 
               Container(height: 20),
