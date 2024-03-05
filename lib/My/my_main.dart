@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memotive/Settings/settings_main.dart';
+import 'package:memotive/My/Settings/settings_main.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
 

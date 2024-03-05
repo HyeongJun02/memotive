@@ -46,7 +46,7 @@ class HomeMain extends StatefulWidget {
 
 class MainPageState extends State<HomeMain> {
   String? searchText;
-
+  ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     // MaterialApp : Material 테마 (+ Custom)
@@ -142,9 +142,25 @@ class MainPageState extends State<HomeMain> {
 
               //광고
               Container(
-                height: 100,
-                width: 400,
-                color: Colors.amber,
+                height: 150,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4, // 원하는 컨테이너 상자 수로 변경
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 371,
+                      margin: EdgeInsets.only(right: 10),
+                      color: Colors.yellow,
+                      child: Center(
+                        child: Text(
+                          '광고 ${index + 1}',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
 
               Container(height: 20),
@@ -157,8 +173,22 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     Text("   기초과목   ",
                         style: TextStyle(fontSize: 15, color: Colors.black)),
-                    Text("   더보기   ",
-                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                    GestureDetector(
+                      onTap: () {
+                        _showCategoryPopup(context);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '   더보기   ',
+                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                          ),
+                          Icon(Icons.arrow_forward,
+                              size: 15, color: Colors.grey),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
                 Container(height: 10),
@@ -193,7 +223,7 @@ class MainPageState extends State<HomeMain> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CategoryItem(title: '한국어', color: Colors.grey),
-                    CategoryItem(title: '영어', color: Colors.grey),
+                    CategoryItem(title: '토익', color: Colors.grey),
                     CategoryItem(title: '일본어', color: Colors.grey),
                     CategoryItem(title: '프랑스어', color: Colors.grey),
                     CategoryItem(title: '러시아어', color: Colors.grey),
@@ -307,6 +337,44 @@ class MainPageState extends State<HomeMain> {
         },
       ),
       // bottomNavigationBar
+    );
+  }
+
+  // 팝업창에 표시할 CategoryItem
+  Widget _buildCategoryItem(String title) {
+    return CategoryItem(
+      title: title,
+      color: Colors.grey,
+    );
+  }
+
+  // 팝업창 표시
+  Future<void> _showCategoryPopup(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('더보기'),
+          content: Container(
+            width: double.maxFinite,
+            child: GridView.count(
+              crossAxisCount: 3,
+              children: List.generate(
+                9,
+                (index) => _buildCategoryItem('항목 ${index + 1}'),
+              ),
+            ),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('닫기'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
