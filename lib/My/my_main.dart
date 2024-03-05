@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memotive/Login/login_main.dart';
 import 'package:memotive/My/Settings/settings_main.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
@@ -21,45 +22,41 @@ class MyMain extends StatelessWidget {
           ),
         ],
       ),
-      // body: CustomScrollView(slivers: [
-      //   SliverAppBar(
-      //       leading: IconButton(
-      //         icon: Icon(Icons.expand),
-      //         onPressed: () {},
-      //       ),
-      //       expandedHeight: 200,
-      //       floating: true,
-      //       pinned: false,
-      //       snap: true,
-      //       elevation: 50,
-      //       backgroundColor: Colors.pink,
-      //       flexibleSpace: Container(
-      //         decoration: BoxDecoration(
-      //             image: DecorationImage(
-      //                 image: AssetImage('assets/image/memologo_0.jpg'),
-      //                 fit: BoxFit.fill)),
-      //       ),
-      //       title: Text('AppBar Title'),
-      //       actions: <Widget>[
-      //         IconButton(
-      //           icon: const Icon(Icons.add_alert),
-      //           onPressed: () {},
-      //         ),
-      //         IconButton(
-      //           icon: const Icon(Icons.phone),
-      //           onPressed: () {},
-      //         ),
-      //       ]),
-      //   SliverFixedExtentList(
-      //       delegate:
-      //           SliverChildBuilderDelegate((BuildContext context, int index) {
-      //         return ListTile(
-      //           title: Text('Hello World Item $index'),
-      //         );
-      //       }),
-      //       itemExtent: 50.0)
-      // ]
-      // body: SingleChildScrollView(child: Column()),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginMain()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                padding: EdgeInsets.symmetric(vertical: 10), // 세로 크기 조절
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.person, size: 24, color: Colors.white),
+                  SizedBox(width: 10),
+                  Text(
+                    '로그인',
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: 4,
         onItemTapped: (index) {
