@@ -4,6 +4,8 @@ import 'package:memotive/navigation_service.dart';
 import 'my_favorite.dart';
 
 class MyMain extends StatelessWidget {
+  const MyMain({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
