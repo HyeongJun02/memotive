@@ -173,22 +173,8 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     Text("   기초과목   ",
                         style: TextStyle(fontSize: 15, color: Colors.black)),
-                    GestureDetector(
-                      onTap: () {
-                        _showCategoryPopup(context);
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '   더보기   ',
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
-                          ),
-                          Icon(Icons.arrow_forward,
-                              size: 15, color: Colors.grey),
-                        ],
-                      ),
-                    ),
+                    Text("   더보기   ",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
                 Container(height: 10),
@@ -337,44 +323,6 @@ class MainPageState extends State<HomeMain> {
         },
       ),
       // bottomNavigationBar
-    );
-  }
-
-  // 팝업창에 표시할 CategoryItem
-  Widget _buildCategoryItem(String title) {
-    return CategoryItem(
-      title: title,
-      color: Colors.grey,
-    );
-  }
-
-  // 팝업창 표시
-  Future<void> _showCategoryPopup(BuildContext context) async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('더보기'),
-          content: Container(
-            width: double.maxFinite,
-            child: GridView.count(
-              crossAxisCount: 3,
-              children: List.generate(
-                9,
-                (index) => _buildCategoryItem('항목 ${index + 1}'),
-              ),
-            ),
-          ),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('닫기'),
-            ),
-          ],
-        );
-      },
     );
   }
 }
