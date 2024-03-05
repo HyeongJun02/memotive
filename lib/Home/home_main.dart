@@ -51,45 +51,45 @@ class MainPageState extends State<HomeMain> {
             fit: BoxFit.fitHeight,
           ),
         ]),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person_outline),
-            onPressed: () {
-              Navigator.pushNamed(context, '/login_main');
-              print('login click');
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.person_outline),
+        //     onPressed: () {
+        //       Navigator.pushNamed(context, '/login_main');
+        //       print('login click');
+        //     },
+        //   ),
+        // ],
       ),
-      drawer: Drawer(
-          // 좌측 상단 메뉴
-          child: ListView(children: [
-        UserAccountsDrawerHeader(
-          decoration: BoxDecoration(
-            color: Color(0xff68C6DF),
-          ),
-          currentAccountPicture: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/memologo_0.jpg'),
-          ),
-          accountName: Text('미모티브'),
-          accountEmail: Text('memotivedev@gmail.com'),
-          onDetailsPressed: () {},
-        ),
-        ListTile(
-          leading: Icon(Icons.person),
-          iconColor: Color(0xffF0F1A9),
-          title: Text('프로필'),
-          onTap: () {},
-          trailing: Icon(Icons.navigate_next),
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          iconColor: Color(0xffF0F1A9),
-          title: Text('설정'),
-          onTap: () {},
-          trailing: Icon(Icons.navigate_next),
-        ),
-      ])),
+      // drawer: Drawer(
+      //     // 좌측 상단 메뉴
+      //     child: ListView(children: [
+      //   UserAccountsDrawerHeader(
+      //     decoration: BoxDecoration(
+      //       color: Color(0xff68C6DF),
+      //     ),
+      //     currentAccountPicture: CircleAvatar(
+      //       backgroundImage: AssetImage('assets/images/memologo_0.jpg'),
+      //     ),
+      //     accountName: Text('미모티브'),
+      //     accountEmail: Text('memotivedev@gmail.com'),
+      //     onDetailsPressed: () {},
+      //   ),
+      //   ListTile(
+      //     leading: Icon(Icons.person),
+      //     iconColor: Color(0xffF0F1A9),
+      //     title: Text('프로필'),
+      //     onTap: () {},
+      //     trailing: Icon(Icons.navigate_next),
+      //   ),
+      //   ListTile(
+      //     leading: Icon(Icons.settings),
+      //     iconColor: Color(0xffF0F1A9),
+      //     title: Text('설정'),
+      //     onTap: () {},
+      //     trailing: Icon(Icons.navigate_next),
+      //   ),
+      // ])),
 
       // ============================================================================================== 중단
       body: ListView(children: [
@@ -198,27 +198,22 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     CategoryItem(
                         title: '국어',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '영어',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '수학',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '사회탐구',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '과학탐구',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                   ],
@@ -245,27 +240,22 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     CategoryItem(
                         title: '한국어',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '토익',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '컴퓨터',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '일본어',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '중국어',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                   ],
@@ -292,27 +282,22 @@ class MainPageState extends State<HomeMain> {
                   children: [
                     CategoryItem(
                         title: '개발',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '디자인',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '마케팅',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '가',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                     CategoryItem(
                         title: '나',
-                        color: Colors.grey,
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main'),
                   ],

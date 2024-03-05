@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 
 class CategoryItem extends StatelessWidget {
   final String title;
-  final Color color;
   final String? imagePath; // 이미지 경로
   final String? navigateTo; // 클릭 시 이동할 페이지의 경로
 
   const CategoryItem({
     required this.title,
-    required this.color,
     this.imagePath,
     this.navigateTo,
   });
@@ -26,7 +24,7 @@ class CategoryItem extends StatelessWidget {
         width: 65,
         height: 65,
         decoration: BoxDecoration(
-          color: color,
+          color: Colors.grey[300],
           borderRadius: BorderRadius.circular(10),
         ),
         child: Stack(
