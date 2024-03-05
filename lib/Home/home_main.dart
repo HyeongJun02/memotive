@@ -196,11 +196,31 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(title: '국어', color: Colors.grey),
-                    CategoryItem(title: '영어', color: Colors.grey),
-                    CategoryItem(title: '수학', color: Colors.grey),
-                    CategoryItem(title: '사회탐구', color: Colors.grey),
-                    CategoryItem(title: '과학탐구', color: Colors.grey),
+                    CategoryItem(
+                        title: '국어',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '영어',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '수학',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '사회탐구',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '과학탐구',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
                   ],
                 ),
               ])),
@@ -223,11 +243,31 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(title: '한국어', color: Colors.grey),
-                    CategoryItem(title: '토익', color: Colors.grey),
-                    CategoryItem(title: '일본어', color: Colors.grey),
-                    CategoryItem(title: '프랑스어', color: Colors.grey),
-                    CategoryItem(title: '러시아어', color: Colors.grey),
+                    CategoryItem(
+                        title: '한국어',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '토익',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '컴퓨터',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '일본어',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '중국어',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
                   ],
                 ),
               ])),
@@ -250,11 +290,31 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CategoryItem(title: '개발', color: Colors.grey),
-                    CategoryItem(title: '디자인', color: Colors.grey),
-                    CategoryItem(title: '마케팅', color: Colors.grey),
-                    CategoryItem(title: '회계', color: Colors.grey),
-                    CategoryItem(title: '기획', color: Colors.grey),
+                    CategoryItem(
+                        title: '개발',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '디자인',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '마케팅',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '가',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '나',
+                        color: Colors.grey,
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
                   ],
                 ),
               ])),
