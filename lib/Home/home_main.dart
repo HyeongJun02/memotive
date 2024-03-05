@@ -98,10 +98,19 @@ class MainPageState extends State<HomeMain> {
             child: Column(children: [
               // 검색
               SearchBar(
+                hintText: "원하는 카테고리 검색",
+                elevation: MaterialStatePropertyAll(0), // 떠있는 정도
+                side: MaterialStateProperty.all(
+                    BorderSide(color: Colors.grey, width: 1)),
                 padding: MaterialStateProperty.all(
                   EdgeInsets.fromLTRB(20, 0, 20, 0),
                 ),
-                trailing: [Icon(Icons.search)],
+                leading: Icon(Icons.search),
+                trailing: [
+                  Icon(Icons.location_on),
+                  Text(' '),
+                  Text('위치'),
+                ],
                 backgroundColor: MaterialStateProperty.all(Colors.white),
                 onSubmitted: (value) {
                   setState(() => searchText = value);
@@ -113,7 +122,7 @@ class MainPageState extends State<HomeMain> {
 
               //광고
               Container(
-                height: 150,
+                height: 200,
                 child: Stack(
                   children: [
                     PageView.builder(
@@ -144,7 +153,7 @@ class MainPageState extends State<HomeMain> {
                             }
                           },
                           child: Card(
-                            color: Colors.yellow,
+                            color: Colors.grey[700],
                             child: Center(
                               child: Text(
                                 '광고 ${index + 1}',
@@ -159,7 +168,7 @@ class MainPageState extends State<HomeMain> {
                 ),
               ),
 
-              Container(height: 10),
+              Container(height: 5),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -186,9 +195,12 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("   기초과목   ",
-                        style: TextStyle(fontSize: 15, color: Colors.black)),
-                    Text("   더보기   ",
+                    Text("기초과목",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기",
                         style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
@@ -228,9 +240,12 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("   어학   ",
-                        style: TextStyle(fontSize: 15, color: Colors.black)),
-                    Text("   더보기   ",
+                    Text("어학",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기",
                         style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
@@ -270,9 +285,12 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("   예술   ",
-                        style: TextStyle(fontSize: 15, color: Colors.black)),
-                    Text("   더보기   ",
+                    Text("예술",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기",
                         style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
