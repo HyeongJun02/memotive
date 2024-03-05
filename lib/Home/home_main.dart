@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
-import 'package:memotive/Login/main_view_model.dart';
 import 'package:memotive/navigation_service.dart';
 
 import '../bottom_navigation_bar.dart';
 import '../Login/login_main.dart';
-import '../Login/kakao_login.dart';
 
 var isDarkTheme = false;
 
