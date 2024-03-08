@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:memotive/Search/search_map.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
-import 'search_map.dart';
 import 'search_map_select.dart';
+import 'package:memotive/Search/Address/depth/adress_depth_screen.dart';
 
 class SearchMain extends StatelessWidget {
   @override
@@ -29,19 +29,19 @@ class SearchMain extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly, //가로 간격 띄어서 정렬
               children: [
                 ElevatedButton(
+                  child: Text('지도 보기'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SearchMap()));
+                  },
+                ),
+                ElevatedButton(
                   child: Text('지역 선택하기'),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SearchMapSelect()));
-                  },
-                ),
-                ElevatedButton(
-                  child: Text('지도 보기'),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SearchMap()));
+                            builder: (context) => AddressDepthScreen()));
                   },
                 ),
               ],

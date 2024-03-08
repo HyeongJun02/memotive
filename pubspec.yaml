@@ -41,6 +41,7 @@ dependencies:
   flutter_naver_map: ^1.2.1
   flutter_bloc: ^8.1.1
   http: ^0.13.5
+  equatable: ^2.0.5
   # kakao_flutter_sdk_talk: ^1.8.0 # 카카오톡 메시지, 카카오톡 소셜(프로필 가져오기, 친구 목록 가져오기)
   # kakao_flutter_sdk_share: ^1.8.0 # 카카오톡 공유
   # kakao_flutter_sdk_navi: ^1.8.0 # 카카오내비
@@ -67,6 +68,8 @@ flutter:
   assets:
     # assets 폴더 안의 내용을 쓰겠다.
     - assets/images/
+    - assets/json/
+    - assets/json/minor/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
