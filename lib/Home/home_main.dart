@@ -222,10 +222,14 @@ class MainPageState extends State<HomeMain> {
   Row buildEnglishCategoryItems() {
     return Row(
       children: [
-        buildAcademyCard('English 1'),
-        buildAcademyCard('English 2'),
-        buildAcademyCard('English 3'),
-        buildAcademyCard('English 4'),
+        buildAcademyCard(
+            'English 1', 'assets/images/memologo_0.jpg', '/login_main'),
+        buildAcademyCard(
+            'English 2', 'assets/images/memologo_0.jpg', '/login_main'),
+        buildAcademyCard(
+            'English 3', 'assets/images/memologo_0.jpg', '/login_main'),
+        buildAcademyCard(
+            'English 4', 'assets/images/memologo_0.jpg', '/login_main'),
       ],
     );
   }
@@ -233,33 +237,41 @@ class MainPageState extends State<HomeMain> {
   Row buildJapaneseCategoryItems() {
     return Row(
       children: [
-        buildAcademyCard('Japanese 1'),
-        buildAcademyCard('Japanese 2'),
+        buildAcademyCard(
+            'Japanese 1', 'assets/images/memologo_0.jpg', '/login_main'),
+        buildAcademyCard(
+            'Japanese 2', 'assets/images/memologo_0.jpg', '/login_main'),
       ],
     );
   }
 
-  Widget buildAcademyCard(String title) {
+  Row buildChineseCategoryItem() {
+    return Row(
+      children: [
+        buildAcademyCard(
+            'Chinese 1', 'assets/images/memologo_0.jpg', '/login_main'),
+        buildAcademyCard(
+            'Chinese 2', 'assets/images/memologo_0.jpg', '/login_main'),
+      ],
+    );
+  }
+
+  Row buildGermanCategoryItem() {
+    return Row(
+      children: [
+        buildAcademyCard(
+            'German 1', 'assets/images/memologo_0.jpg', '/login_main'),
+        buildAcademyCard(
+            'German 2', 'assets/images/memologo_0.jpg', '/login_main'),
+      ],
+    );
+  }
+
+  Widget buildAcademyCard(String title, String imagePath, String navigateTo) {
     return AcademyCard(
       title: title,
-      imagePath: 'assets/images/memologo_0.jpg',
-      navigateTo: '/login_main', // 예시로 설정된 값, 실제로 사용하는 경로로 변경해야 합니다.
-    );
-  }
-
-  AcademyCard buildChineseCategoryItem() {
-    return AcademyCard(
-      title: '중국어 카테고리',
-      imagePath: 'assets/images/memologo_0.jpg',
-      navigateTo: '/login_main',
-    );
-  }
-
-  AcademyCard buildGermanCategoryItem() {
-    return AcademyCard(
-      title: '독일어 카테고리',
-      imagePath: 'assets/images/memologo_0.jpg',
-      navigateTo: '/login_main',
+      imagePath: imagePath,
+      navigateTo: navigateTo, // 예시로 설정된 값, 실제로 사용하는 경로로 변경해야 합니다.
     );
   }
 
@@ -290,6 +302,7 @@ class MainPageState extends State<HomeMain> {
   }
 }
 
+// 과목 버튼 스타일
 ButtonStyle buildElevatedButtonStyle(bool isSelected) {
   return ElevatedButton.styleFrom(
     elevation: 0,
@@ -303,6 +316,7 @@ ButtonStyle buildElevatedButtonStyle(bool isSelected) {
   );
 }
 
+// 과목 버튼 글자 스타일
 TextStyle buildButtonTextStyle(bool isSelected) {
   return TextStyle(
     fontSize: 12,
