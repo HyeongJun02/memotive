@@ -1,27 +1,13 @@
 import 'package:flutter/material.dart';
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
-import 'package:memotive/Login/main_view_model.dart';
 import 'package:memotive/navigation_service.dart';
+import 'CategoryItem.dart';
 
 import '../bottom_navigation_bar.dart';
 import '../Login/login_main.dart';
-import '../Login/kakao_login.dart';
 
 var isDarkTheme = false;
-
-// void main() {
-//   KakaoSdk.init(nativeAppKey: 'b248c8d60ac3e422235ae6a0b0440545');
-//   runApp(
-//     MaterialApp(title: 'Navigator', initialRoute: '/', routes: {
-//       '/': (context) => MainPage(),
-//       '/login_main': (context) => LoginMain(),
-//       '/more_main': (context) => MoreMain(),
-//     }
-//         //home: MyApp(),
-//         ),
-//   );
-// }
 
 class HomeMain extends StatefulWidget {
   const HomeMain({Key? key});
@@ -31,10 +17,20 @@ class HomeMain extends StatefulWidget {
 }
 
 class MainPageState extends State<HomeMain> {
-  // final viewModel = MainViewModel(KakaoLogin());
-  List<String> citys = ['서울', '인천', '부산', '대구'];
+  String? searchText;
+  PageController _pageController = PageController();
+  int _currentPage = 0;
 
-  //MyApp({Key? key}) : super(key: key); // const 제거
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      setState(() {
+        _currentPage = _pageController.page!.round();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // MaterialApp : Material 테마 (+ Custom)
@@ -54,166 +50,299 @@ class MainPageState extends State<HomeMain> {
             height: 40,
             fit: BoxFit.fitHeight,
           ),
-          // Text(
-          //   style: TextStyle(
-          //     fontSize: 23,
-          //     color: (isDarkTheme ? Colors.white : Colors.black),
-          //   ),
-          //   'memotive',
-          // )
         ]),
-        actions: [
-          // IconButton(
-          //   icon: const Icon(Icons.search),
-          //   onPressed: () {
-          //     print('search click');
-          //   },
-          // ),
-          IconButton(
-            icon: const Icon(Icons.person_outline),
-            onPressed: () {
-              Navigator.pushNamed(context, '/login_main');
-              print('login click');
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.person_outline),
+        //     onPressed: () {
+        //       Navigator.pushNamed(context, '/login_main');
+        //       print('login click');
+        //     },
+        //   ),
+        // ],
       ),
-      drawer: Drawer(
-          // 좌측 상단 메뉴
-          child: ListView(children: [
-        UserAccountsDrawerHeader(
-          decoration: BoxDecoration(
-            color: Color(0xff68C6DF),
-          ),
-          currentAccountPicture: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/memologo_0.jpg'),
-          ),
-          accountName: Text('미모티브'),
-          accountEmail: Text('memotivedev@gmail.com'),
-          onDetailsPressed: () {},
-        ),
-        ListTile(
-          leading: Icon(Icons.person),
-          iconColor: Color(0xffF0F1A9),
-          title: Text('프로필'),
-          onTap: () {},
-          trailing: Icon(Icons.navigate_next),
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          iconColor: Color(0xffF0F1A9),
-          title: Text('설정'),
-          onTap: () {},
-          trailing: Icon(Icons.navigate_next),
-        ),
-      ])),
+      // drawer: Drawer(
+      //     // 좌측 상단 메뉴
+      //     child: ListView(children: [
+      //   UserAccountsDrawerHeader(
+      //     decoration: BoxDecoration(
+      //       color: Color(0xff68C6DF),
+      //     ),
+      //     currentAccountPicture: CircleAvatar(
+      //       backgroundImage: AssetImage('assets/images/memologo_0.jpg'),
+      //     ),
+      //     accountName: Text('미모티브'),
+      //     accountEmail: Text('memotivedev@gmail.com'),
+      //     onDetailsPressed: () {},
+      //   ),
+      //   ListTile(
+      //     leading: Icon(Icons.person),
+      //     iconColor: Color(0xffF0F1A9),
+      //     title: Text('프로필'),
+      //     onTap: () {},
+      //     trailing: Icon(Icons.navigate_next),
+      //   ),
+      //   ListTile(
+      //     leading: Icon(Icons.settings),
+      //     iconColor: Color(0xffF0F1A9),
+      //     title: Text('설정'),
+      //     onTap: () {},
+      //     trailing: Icon(Icons.navigate_next),
+      //   ),
+      // ])),
 
       // ============================================================================================== 중단
       body: ListView(children: [
-        Column(children: [
-          // GridView.builder(
-          //   itemCount: citys.length,
-          //   itemBuilder: (context, index) {
-          //     return Card(
-          //         child: Column(children: [
-          //       Text(citys[index]),
-          //       //Image.asset('assets/images/Kakao_Login')
-          //     ]));
-          //   },
-          //   scrollDirection: Axis.horizontal,
-          //   gridDelegate:
-          //       SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-          // ),
-
-          // Text(
-          //   '내 주변 학원 추천',
-          //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          // ),
-
-          // Kakao Login
-          // Image.network(
-          //     viewModel.user?.kakaoAccount?.profile?.profileImageUrl ?? ''),
-          // ElevatedButton(
-          //   onPressed: () async {
-          //     await viewModel.login();
-          //     setState(() {});
-          //   },
-          //   child: Text('Login'),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () async {
-          //     await viewModel.logout();
-          //     setState(() {});
-          //   },
-          //   child: Text('Logout'),
-          // ),
-
-          Text.rich(TextSpan(
-              text: userName,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+        Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(children: [
+              // 검색
+              SearchBar(
+                hintText: "원하는 카테고리 검색",
+                elevation: MaterialStatePropertyAll(0), // 떠있는 정도
+                side: MaterialStateProperty.all(
+                    BorderSide(color: Colors.grey, width: 1)),
+                padding: MaterialStateProperty.all(
+                  EdgeInsets.fromLTRB(20, 0, 20, 0),
+                ),
+                leading: Icon(Icons.search),
+                trailing: [
+                  Icon(Icons.location_on),
+                  Text(' '),
+                  Text('위치'),
+                ],
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                onSubmitted: (value) {
+                  setState(() => searchText = value);
+                  print('Input Text = $searchText');
+                },
               ),
-              children: [
-                TextSpan(
-                  text: ' 님 안녕하세요.',
+
+              Container(height: 20),
+
+              //광고
+              Container(
+                height: 200,
+                child: Stack(
+                  children: [
+                    PageView.builder(
+                      controller: _pageController,
+                      itemCount: 4,
+                      onPageChanged: (index) {
+                        setState(() {
+                          _currentPage = index;
+                        });
+                      },
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            // 각 광고를 클릭했을 때 다른 동작을 수행하도록 설정
+                            switch (index) {
+                              case 0:
+                                // 첫 번째 광고를 클릭했을 때의 동작
+                                break;
+                              case 1:
+                                // 두 번째 광고를 클릭했을 때의 동작
+                                break;
+                              case 2:
+                                // 세 번째 광고를 클릭했을 때의 동작
+                                break;
+                              case 3:
+                                // 네 번째 광고를 클릭했을 때의 동작
+                                break;
+                            }
+                          },
+                          child: Card(
+                            color: Colors.grey[200],
+                            child: Center(
+                              child: Text(
+                                '광고 ${index + 1}',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+
+              Container(height: 5),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(4, (index) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 2),
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _currentPage == index
+                          ? Colors.grey
+                          : Colors.grey[300],
+                    ),
+                  );
+                }),
+              ),
+
+              Container(height: 20),
+
+              // 기초과목
+              Container(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("기초과목",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기 >",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                  ],
+                ),
+                Container(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem(
+                        title: '국어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '영어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '수학',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '사회탐구',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '과학탐구',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                  ],
+                ),
+              ])),
+
+              Container(height: 20),
+              Container(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("어학",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기 >",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                  ],
+                ),
+                Container(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem(
+                        title: '국어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '영어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '수학',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '사회탐구',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '과학탐구',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                  ],
+                ),
+              ])),
+
+              Container(height: 20),
+
+              Text.rich(TextSpan(
+                  text: userName,
                   style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+                  children: [
+                    TextSpan(
+                      text: ' 님 안녕하세요.',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black,
+                      ),
+                    )
+                  ])),
+              Text('성별 : $userGender'),
+              Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
+              Text('나이 : $userAge살'),
+              Text('아아'),
+              Text('아아'),
+              Row(children: [
+                Container(
+                    width: 150,
+                    height: 150,
+                    margin: EdgeInsets.all(20),
+                    color: Colors.red),
+                Container(
+                    color: Colors.grey,
+                    child: Column(children: [
+                      Container(
+                          color: Colors.deepPurpleAccent,
+                          child: Text('우산 팔아요\n아아')),
+                      Container(
+                          color: Colors.tealAccent, child: Text('안양시 호계동')),
+                      Container(color: Colors.teal, child: Text('120,000원')),
+                      Container(
+                          color: Colors.yellow,
+                          child: Row(children: [
+                            Container(child: Icon(Icons.favorite_border)),
+                            Container(child: Text('10')),
+                          ])),
+                    ])),
+                Spacer(),
+                Column(
+                  children: [
+                    Icon(Icons.menu),
+                  ],
                 )
-              ])),
-          Text('성별 : $userGender'),
-          Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
-          Text('나이 : $userAge살'),
-          Text('아아'),
-          Text('아아'),
-          Row(children: [
-            Container(
-                width: 150,
-                height: 150,
-                margin: EdgeInsets.all(20),
-                color: Colors.red),
-            Container(
-                color: Colors.grey,
-                child: Column(children: [
-                  Container(
-                      color: Colors.deepPurpleAccent,
-                      child: Text('우산 팔아요\n아아')),
-                  Container(color: Colors.tealAccent, child: Text('안양시 호계동')),
-                  Container(color: Colors.teal, child: Text('120,000원')),
-                  Container(
-                      color: Colors.yellow,
-                      child: Row(children: [
-                        Container(child: Icon(Icons.favorite_border)),
-                        Container(child: Text('10')),
-                      ])),
-                ])),
-            Spacer(),
-            Column(
-              children: [
-                Icon(Icons.menu),
-              ],
-            )
-          ]),
-
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            ElevatedButton(
-                onPressed: () {
-                  print('글자 클릭');
-                },
-                style: ButtonStyle(),
-                child: Text('글자')),
-            ElevatedButton(
-                onPressed: () {
-                  print('글자 클릭');
-                },
-                style: ButtonStyle(),
-                child: Text('글자')),
-          ])
-        ])
+              ]),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                ElevatedButton(
+                    onPressed: () {
+                      print('글자 클릭');
+                    },
+                    style: ButtonStyle(),
+                    child: Text('글자')),
+                ElevatedButton(
+                    onPressed: () {
+                      print('글자 클릭');
+                    },
+                    style: ButtonStyle(),
+                    child: Text('글자')),
+              ])
+            ])),
       ]),
 
       // ============================================================================================== 하단

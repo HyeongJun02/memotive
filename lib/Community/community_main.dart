@@ -9,7 +9,7 @@ class CommunityMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CommunityMain'),
+        title: Text('커뮤니티'),
       ),
       body: Center(
         child: Text('CommunityMain Content'),
