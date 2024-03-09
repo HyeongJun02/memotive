@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:memotive/Search/search_map.dart';
 import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
-import 'search_map_select.dart';
 import 'package:memotive/Search/Address/depth/adress_depth_screen.dart';
+import 'package:memotive/Search/Academy/academylist.dart';
 
 class SearchMain extends StatelessWidget {
   @override
@@ -42,6 +42,13 @@ class SearchMain extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                             builder: (context) => AddressDepthScreen()));
+                  },
+                ),
+                ElevatedButton(
+                  child: Text('학원 리스트'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => academylist()));
                   },
                 ),
               ],

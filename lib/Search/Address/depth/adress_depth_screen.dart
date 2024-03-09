@@ -45,7 +45,7 @@ class AddressDepthScreen extends StatelessWidget {
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
-                        color: Colors.amber),
+                        color: Colors.black),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
@@ -129,7 +129,7 @@ class AddressDepthScreen extends StatelessWidget {
                         _listView(
                           width: _width - 130,
                           color: const Color.fromRGBO(81, 81, 81, 1),
-                          selecteColor: Colors.green,
+                          selecteColor: Colors.green, //동
                           onTap: (i) => context.read<AddressDepthBloc>().add(
                               AddressDepthFinishEvent(
                                   selected: state.address!.minor.address[i])),
