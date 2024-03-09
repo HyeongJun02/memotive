@@ -20,6 +20,7 @@ class MainPageState extends State<HomeMain> {
   String? searchText;
   PageController _pageController = PageController();
   int _currentPage = 0;
+  String selectedLanguageCategory = "영어"; // initState에서 초기화
 
   @override
   void initState() {
@@ -29,11 +30,14 @@ class MainPageState extends State<HomeMain> {
         _currentPage = _pageController.page!.round();
       });
     });
+
+    // initState에서 초기화
+    selectedLanguageCategory = "영어";
   }
 
   @override
   Widget build(BuildContext context) {
-    String selectedLanguageCategory = '영어';
+    print(selectedLanguageCategory);
 
     // MaterialApp : Material 테마 (+ Custom)
     return Scaffold(
@@ -252,7 +256,6 @@ class MainPageState extends State<HomeMain> {
                 Container(
                   // 언어 선택 버튼
                   child: Row(
-                    key: UniqueKey(),
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
@@ -299,11 +302,21 @@ class MainPageState extends State<HomeMain> {
                 Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (selectedLanguageCategory != '영어')
-                      CategoryItem(
-                        title: '국어',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main',
+                    if (selectedLanguageCategory == '영어')
+                      Row(
+                        children: [
+                          CategoryItem(
+                            title: '영어 카테고리 1',
+                            imagePath: 'assets/images/memologo_0.jpg',
+                            navigateTo: '/login_main',
+                          ),
+                          CategoryItem(
+                            title: '영어 카테고리 2',
+                            imagePath: 'assets/images/memologo_0.jpg',
+                            navigateTo: '/login_main',
+                          ),
+                          // 추가적인 영어 카테고리 위젯들...
+                        ],
                       ),
                     if (selectedLanguageCategory == '일본어')
                       CategoryItem(
@@ -320,12 +333,6 @@ class MainPageState extends State<HomeMain> {
                     if (selectedLanguageCategory == '독일어')
                       CategoryItem(
                         title: '독일어 카테고리',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main',
-                      ),
-                    if (selectedLanguageCategory == '영어')
-                      CategoryItem(
-                        title: '영어 카테고리',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main',
                       ),
