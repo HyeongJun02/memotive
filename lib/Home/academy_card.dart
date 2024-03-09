@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CategoryItem extends StatelessWidget {
+class AcademyCard extends StatelessWidget {
   final String title;
   final String? imagePath; // 이미지 경로
   final String? navigateTo; // 클릭 시 이동할 페이지의 경로
 
-  const CategoryItem({
+  const AcademyCard({
     required this.title,
     this.imagePath,
     this.navigateTo,

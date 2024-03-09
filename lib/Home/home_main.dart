@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
 import 'package:memotive/navigation_service.dart';
-import 'CategoryItem.dart';
+import 'academy_card.dart';
 
 import '../bottom_navigation_bar.dart';
 import '../Login/login_main.dart';
@@ -195,50 +195,6 @@ class MainPageState extends State<HomeMain> {
 
               Container(height: 20),
 
-              // 기초과목
-              Container(
-                  child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("기초과목",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold)),
-                    Text("더보기 >",
-                        style: TextStyle(fontSize: 10, color: Colors.grey)),
-                  ],
-                ),
-                Container(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CategoryItem(
-                        title: '국어',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '영어',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '수학',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '사회탐구',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                    CategoryItem(
-                        title: '과학탐구',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main'),
-                  ],
-                ),
-              ])),
-
-              Container(height: 20),
               Container(
                   child: Column(children: [
                 Row(
@@ -256,18 +212,24 @@ class MainPageState extends State<HomeMain> {
                 Container(
                   // 언어 선택 버튼
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          // 선택된 언어 변경
                           setState(() {
                             selectedLanguageCategory = '영어';
                             print(selectedLanguageCategory);
                           });
                         },
-                        child: Text('영어'),
+                        style: buildElevatedButtonStyle(
+                            selectedLanguageCategory == '영어'),
+                        child: Text(
+                          '영어',
+                          style: buildButtonTextStyle(
+                              selectedLanguageCategory == '영어'),
+                        ),
                       ),
+                      Container(width: 10),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -275,8 +237,15 @@ class MainPageState extends State<HomeMain> {
                             print(selectedLanguageCategory);
                           });
                         },
-                        child: Text('일본어'),
+                        style: buildElevatedButtonStyle(
+                            selectedLanguageCategory == '일본어'),
+                        child: Text(
+                          '일본어',
+                          style: buildButtonTextStyle(
+                              selectedLanguageCategory == '일본어'),
+                        ),
                       ),
+                      Container(width: 10),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -284,8 +253,15 @@ class MainPageState extends State<HomeMain> {
                             print(selectedLanguageCategory);
                           });
                         },
-                        child: Text('중국어'),
+                        style: buildElevatedButtonStyle(
+                            selectedLanguageCategory == '중국어'),
+                        child: Text(
+                          '중국어',
+                          style: buildButtonTextStyle(
+                              selectedLanguageCategory == '중국어'),
+                        ),
                       ),
+                      Container(width: 10),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -293,7 +269,13 @@ class MainPageState extends State<HomeMain> {
                             print(selectedLanguageCategory);
                           });
                         },
-                        child: Text('독일어'),
+                        style: buildElevatedButtonStyle(
+                            selectedLanguageCategory == '독일어'),
+                        child: Text(
+                          '독일어',
+                          style: buildButtonTextStyle(
+                              selectedLanguageCategory == '독일어'),
+                        ),
                       ),
                     ],
                   ),
@@ -305,33 +287,51 @@ class MainPageState extends State<HomeMain> {
                     if (selectedLanguageCategory == '영어')
                       Row(
                         children: [
-                          CategoryItem(
-                            title: '영어 카테고리 1',
+                          AcademyCard(
+                            title: 'English 1',
                             imagePath: 'assets/images/memologo_0.jpg',
                             navigateTo: '/login_main',
                           ),
-                          CategoryItem(
-                            title: '영어 카테고리 2',
+                          AcademyCard(
+                            title: 'English 2',
                             imagePath: 'assets/images/memologo_0.jpg',
                             navigateTo: '/login_main',
                           ),
-                          // 추가적인 영어 카테고리 위젯들...
+                          AcademyCard(
+                            title: 'English 3',
+                            imagePath: 'assets/images/memologo_0.jpg',
+                            navigateTo: '/login_main',
+                          ),
+                          AcademyCard(
+                            title: 'English 4',
+                            imagePath: 'assets/images/memologo_0.jpg',
+                            navigateTo: '/login_main',
+                          ),
                         ],
                       ),
                     if (selectedLanguageCategory == '일본어')
-                      CategoryItem(
-                        title: '일본어 카테고리',
-                        imagePath: 'assets/images/memologo_0.jpg',
-                        navigateTo: '/login_main',
+                      Row(
+                        children: [
+                          AcademyCard(
+                            title: 'Japanese 1',
+                            imagePath: 'assets/images/memologo_0.jpg',
+                            navigateTo: '/login_main',
+                          ),
+                          AcademyCard(
+                            title: 'Japanese 2',
+                            imagePath: 'assets/images/memologo_0.jpg',
+                            navigateTo: '/login_main',
+                          ),
+                        ],
                       ),
                     if (selectedLanguageCategory == '중국어')
-                      CategoryItem(
+                      AcademyCard(
                         title: '중국어 카테고리',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main',
                       ),
                     if (selectedLanguageCategory == '독일어')
-                      CategoryItem(
+                      AcademyCard(
                         title: '독일어 카테고리',
                         imagePath: 'assets/images/memologo_0.jpg',
                         navigateTo: '/login_main',
@@ -421,4 +421,26 @@ class MainPageState extends State<HomeMain> {
       // bottomNavigationBar
     );
   }
+}
+
+// 카테고리 버튼
+ButtonStyle buildElevatedButtonStyle(bool isSelected) {
+  return ElevatedButton.styleFrom(
+    elevation: 0,
+    side: BorderSide(
+      color: Colors.grey,
+      width: 1.0,
+    ),
+    minimumSize: Size(50, 10),
+    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+    backgroundColor: isSelected ? Colors.grey : Colors.white,
+  );
+}
+
+// 카테고리 버튼 글자
+TextStyle buildButtonTextStyle(bool isSelected) {
+  return TextStyle(
+    fontSize: 12,
+    color: isSelected ? Colors.white : Colors.grey,
+  );
 }
