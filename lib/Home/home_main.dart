@@ -33,22 +33,7 @@ class MainPageState extends State<HomeMain> {
 
   @override
   Widget build(BuildContext context) {
-// 상단에 다음 코드를 추가
-    List<String> title_Language = ['국어', '영어', '수학', '사회탐구', '과학탐구'];
-    List<String> navigateTo_Language = [
-      'assets/images/memologo_0.jpg',
-      'assets/images/memologo_0.jpg',
-      'assets/images/memologo_0.jpg',
-      'assets/images/memologo_0.jpg',
-      'assets/images/memologo_0.jpg'
-    ];
-    List<String> imagePath_Language = [
-      '/login_main',
-      '/login_main',
-      '/login_main',
-      '/login_main',
-      '/login_main'
-    ];
+    String selectedLanguageCategory = '영어';
 
     // MaterialApp : Material 테마 (+ Custom)
     return Scaffold(
@@ -115,7 +100,7 @@ class MainPageState extends State<HomeMain> {
             child: Column(children: [
               // 검색
               SearchBar(
-                hintText: "원하는 카테고리 검색 Test",
+                hintText: "원하는 카테고리 검색",
                 elevation: MaterialStatePropertyAll(0), // 떠있는 정도
                 side: MaterialStateProperty.all(
                     BorderSide(color: Colors.grey, width: 1)),
@@ -206,47 +191,147 @@ class MainPageState extends State<HomeMain> {
 
               Container(height: 20),
 
-              // '기초과목' 아래에 추가
+              // 기초과목
               Container(
-                child: Column(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "어학",
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "더보기 >",
-                          style: TextStyle(fontSize: 10, color: Colors.grey),
-                        ),
-                      ],
-                    ),
-                    Container(height: 10),
-                    Container(
-                      height: 100, // 그리드뷰의 높이 조절
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal, // 수평 스크롤
-                        itemCount: title_Language.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: CategoryItem(
-                              title: title_Language[index],
-                              imagePath: imagePath_Language[index],
-                              navigateTo: navigateTo_Language[index],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                    Text("기초과목",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기 >",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
                   ],
                 ),
-              ),
+                Container(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem(
+                        title: '국어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '영어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '수학',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '사회탐구',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                    CategoryItem(
+                        title: '과학탐구',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main'),
+                  ],
+                ),
+              ])),
+
+              Container(height: 20),
+              Container(
+                  child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("어학",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold)),
+                    Text("더보기 >",
+                        style: TextStyle(fontSize: 10, color: Colors.grey)),
+                  ],
+                ),
+                Container(
+                  // 언어 선택 버튼
+                  child: Row(
+                    key: UniqueKey(),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          // 선택된 언어 변경
+                          setState(() {
+                            selectedLanguageCategory = '영어';
+                            print(selectedLanguageCategory);
+                          });
+                        },
+                        child: Text('영어'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedLanguageCategory = '일본어';
+                            print(selectedLanguageCategory);
+                          });
+                        },
+                        child: Text('일본어'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedLanguageCategory = '중국어';
+                            print(selectedLanguageCategory);
+                          });
+                        },
+                        child: Text('중국어'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedLanguageCategory = '독일어';
+                            print(selectedLanguageCategory);
+                          });
+                        },
+                        child: Text('독일어'),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(height: 10),
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    if (selectedLanguageCategory != '영어')
+                      CategoryItem(
+                        title: '국어',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main',
+                      ),
+                    if (selectedLanguageCategory == '일본어')
+                      CategoryItem(
+                        title: '일본어 카테고리',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main',
+                      ),
+                    if (selectedLanguageCategory == '중국어')
+                      CategoryItem(
+                        title: '중국어 카테고리',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main',
+                      ),
+                    if (selectedLanguageCategory == '독일어')
+                      CategoryItem(
+                        title: '독일어 카테고리',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main',
+                      ),
+                    if (selectedLanguageCategory == '영어')
+                      CategoryItem(
+                        title: '영어 카테고리',
+                        imagePath: 'assets/images/memologo_0.jpg',
+                        navigateTo: '/login_main',
+                      ),
+                  ],
+                ),
+              ])),
 
               Container(height: 20),
 
