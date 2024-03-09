@@ -98,7 +98,7 @@ class MainPageState extends State<HomeMain> {
             child: Column(children: [
               // 검색
               SearchBar(
-                hintText: "원하는 카테고리 검색",
+                hintText: "원하는 카테고리 검색 Test",
                 elevation: MaterialStatePropertyAll(0), // 떠있는 정도
                 side: MaterialStateProperty.all(
                     BorderSide(color: Colors.grey, width: 1)),
