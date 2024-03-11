@@ -14,23 +14,35 @@ class Addacademy extends StatelessWidget {
         title: Text('Add academy'),
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height / 2 + bottomInset,
+        height: MediaQuery.of(context).size.height + bottomInset,
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
+              child: CustomAcademy(label: '아이디(넘버)'),
+            ),
+            SizedBox(height: 15),
+
+            Expanded(
               child: CustomAcademy(label: '학원명'),
             ),
+            SizedBox(height: 15),
 
             Expanded(
               child: CustomAcademy(label: '위치'),
             ),
+            SizedBox(height: 15),
 
             Expanded(
-              child: CustomAcademy(label: '학원 개요'),
+              child: CustomAcademy(label: '전화번호'),
             ),
+            SizedBox(height: 15),
 
+            Expanded(
+              child: CustomAcademy(label: '가격'),
+            ),
+            SizedBox(height: 25),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
