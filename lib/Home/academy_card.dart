@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class AcademyCard extends StatelessWidget {
   final String title;
+  final String? subTitle;
   final String? imagePath; // 이미지 경로
   final String? navigateTo; // 클릭 시 이동할 페이지의 경로
 
   const AcademyCard({
     required this.title,
+    this.subTitle,
     this.imagePath,
     this.navigateTo,
   });
@@ -20,48 +22,76 @@ class AcademyCard extends StatelessWidget {
           Navigator.pushNamed(context, navigateTo!);
         }
       },
-      child: Container(
-        width: 65,
-        height: 65,
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Stack(
-          children: [
-            // 이미지 표시 부분
-            if (imagePath != null)
-              Positioned.fill(
-                child: Image.asset(
-                  imagePath!,
-                  fit: BoxFit.cover,
+      child: Row(
+        children: [
+          Column(
+            children: [
+              Container(
+                width: 120,
+                height: 120, // 높이 조정
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Stack(
+                  children: [
+                    // 이미지 표시 부분
+                    if (imagePath != null)
+                      Positioned.fill(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            imagePath!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    // 찜 아이콘 표시 부분
+                    Positioned(
+                      top: 15,
+                      left: 15,
+                      child: Icon(
+                        Icons.favorite_outline,
+                        color: Colors.red,
+                        size: 25,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            // 텍스트 표시 부분
-            if (imagePath == null)
+              // 텍스트 표시 부분
               Align(
-                alignment: Alignment.center,
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                      if (subTitle != null)
+                        Text(
+                          subTitle!,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 10,
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
-            // 작은 텍스트 표시 부분
-            Positioned(
-              bottom: 2,
-              right: 2,
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          ],
-        ),
+            ],
+          ),
+          Container(width: 10)
+        ],
       ),
     );
   }
