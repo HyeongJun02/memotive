@@ -78,9 +78,9 @@ class MainPageState extends State<HomeMain> {
               const SizedBox(height: 5),
               buildPageIndicator(), // 광고 페이지 인디케이터
               const SizedBox(height: 20),
-              buildLanguageCategory('어학', ''), // 카테고리 - 어학
+              buildLanguageCategory('어학', 'moreNav'), // 카테고리 - 어학
               const SizedBox(height: 10),
-              buildLanguageButtons(), // 과목
+              buildLanguageButtons(['영어', '일본어', '중국어', '독일어']), // 과목
               const SizedBox(height: 10),
               buildCategoryItems(), // 카드
               const SizedBox(height: 20),
@@ -97,7 +97,7 @@ class MainPageState extends State<HomeMain> {
       hintText: "원하는 카테고리 검색",
       elevation: MaterialStateProperty.all(0),
       side: MaterialStateProperty.all(BorderSide(color: Colors.grey, width: 1)),
-      padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(20, 0, 20, 0)),
+      padding: MaterialStateProperty.all(EdgeInsets.fromLTRB(15, 0, 15, 0)),
       leading: const Icon(Icons.search),
       trailing: [
         const Icon(Icons.location_on),
@@ -181,13 +181,16 @@ class MainPageState extends State<HomeMain> {
     );
   }
 
-  Widget buildLanguageButtons() {
+  Widget buildLanguageButtons(List<String> Subjects) {
     return Row(
       children: [
-        buildLanguageButton('영어'),
-        buildLanguageButton('일본어'),
-        buildLanguageButton('중국어'),
-        buildLanguageButton('독일어'),
+        for (String subject in Subjects)
+          Column(
+            children: [
+              buildLanguageButton(subject),
+              Container(width: 50),
+            ],
+          ),
       ],
     );
   }
