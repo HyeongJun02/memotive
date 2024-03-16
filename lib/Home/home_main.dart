@@ -19,8 +19,13 @@ class MainPageState extends State<HomeMain> {
   PageController _pageController = PageController();
   int _currentPage = 0;
   String selectedLanguageCategory = "영어";
+  int selectedCategory = 0;
   String academyPic =
       'C:/Dev/Flutter/memotive-song/assets/images/example/ex_academy.jpg';
+
+  // 과목 리스트
+  List<String> languageList = ['영어', '일본어', '중국어', '독일어'];
+  List<String> subjectList = ['국어', '영어', '수학', '과학탐구', '사회탐구'];
 
   @override
   void initState() {
@@ -91,9 +96,9 @@ class MainPageState extends State<HomeMain> {
               buildPageIndicator(), // 광고 페이지 인디케이터
               const SizedBox(height: 20),
               buildLanguageCategory('어학', 'moreNav'), // 카테고리 - 어학
-              const SizedBox(height: 10),
+              const SizedBox(height: 0),
               buildLanguageButtons(['영어', '일본어', '중국어', '독일어']), // 과목
-              const SizedBox(height: 10),
+              const SizedBox(height: 0),
               buildCategoryItems(), // 카드
               const SizedBox(height: 20),
               buildUserInfo(),
