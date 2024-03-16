@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:memotive/Home/widgets_basic.dart';
+import 'package:memotive/Home/widgets_language.dart';
 // import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
 import 'package:memotive/navigation_service.dart';
-import 'academy_card.dart';
+// import 'academy_card.dart';
 
 import '../bottom_navigation_bar.dart';
-import '../Login/login_main.dart';
+// import '../Login/login_main.dart';
 
 class HomeMain extends StatefulWidget {
   const HomeMain({Key? key});
@@ -19,13 +21,14 @@ class MainPageState extends State<HomeMain> {
   PageController _pageController = PageController();
   int _currentPage = 0;
   String selectedLanguageCategory = "영어";
-  int selectedCategory = 0;
+  String selectedBasicCategory = "국어";
+  // int selectedCategory = 0;
   String academyPic =
       'C:/Dev/Flutter/memotive-song/assets/images/example/ex_academy.jpg';
 
   // 과목 리스트
-  List<String> languageList = ['영어', '일본어', '중국어', '독일어'];
-  List<String> subjectList = ['국어', '영어', '수학', '과학탐구', '사회탐구'];
+  // List<String> languageList = ['영어', '일본어', '중국어', '독일어'];
+  // List<String> subjectList = ['국어', '수학', '과학탐구', '사회탐구'];
 
   @override
   void initState() {
@@ -37,6 +40,8 @@ class MainPageState extends State<HomeMain> {
     });
 
     selectedLanguageCategory = "영어";
+    selectedBasicCategory = "국어";
+    // selectedCategory = 0;
   }
 
   @override
@@ -95,13 +100,19 @@ class MainPageState extends State<HomeMain> {
               const SizedBox(height: 5),
               buildPageIndicator(), // 광고 페이지 인디케이터
               const SizedBox(height: 20),
-              buildLanguageCategory('어학', 'moreNav'), // 카테고리 - 어학
+              buildCategory('어학 (Language)', 'moreNav'), // 카테고리 - 어학
               const SizedBox(height: 0),
               buildLanguageButtons(['영어', '일본어', '중국어', '독일어']), // 과목
               const SizedBox(height: 0),
-              buildCategoryItems(), // 카드
+              buildLanguageItems(selectedLanguageCategory), // 카드
+              const SizedBox(height: 0),
+              buildCategory('기초과목 (Basic)', 'moreNav'), // 카테고리 - 어학
+              const SizedBox(height: 0),
+              buildBasicButtons(['국어', '수학', '과학탐구', '사회탐구']), // 과목
+              const SizedBox(height: 0),
+              buildBasicItems(selectedBasicCategory), // 카드
               const SizedBox(height: 20),
-              buildUserInfo(),
+              //buildUserInfo(),
             ],
           ),
         ),
@@ -186,7 +197,7 @@ class MainPageState extends State<HomeMain> {
   }
 
 // 카테고리 타이틀 및 더보기
-  Widget buildLanguageCategory(String categoryName, String moreNav) {
+  Widget buildCategory(String categoryName, String moreNav) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -203,7 +214,7 @@ class MainPageState extends State<HomeMain> {
     );
   }
 
-// 과목 버튼
+// Language 버튼
   Widget buildLanguageButtons(List<String> subjects) {
     // 버튼과 여백을 함께 담을 리스트 생성
     List<Widget> buttonsWithSpacing = [];
@@ -220,7 +231,7 @@ class MainPageState extends State<HomeMain> {
     );
   }
 
-// 과목 버튼 style
+// Language 버튼 style
   ElevatedButton buildLanguageButton(String language) {
     return ElevatedButton(
       onPressed: () {
@@ -237,108 +248,65 @@ class MainPageState extends State<HomeMain> {
     );
   }
 
-// 과목 (어학)
-  Widget buildCategoryItems() {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            if (selectedLanguageCategory == '영어') buildEnglishCategoryItems(),
-            if (selectedLanguageCategory == '일본어') buildJapaneseCategoryItems(),
-            if (selectedLanguageCategory == '중국어') buildChineseCategoryItem(),
-            if (selectedLanguageCategory == '독일어') buildGermanCategoryItem(),
-          ],
-        ),
+// Basic 버튼
+  Widget buildBasicButtons(List<String> subjects) {
+    // 버튼과 여백을 함께 담을 리스트 생성
+    List<Widget> buttonsWithSpacing = [];
+
+    // 각 과목에 대한 버튼과 여백을 추가
+    for (String subject in subjects) {
+      buttonsWithSpacing.add(buildBasicButton(subject));
+      buttonsWithSpacing.add(SizedBox(width: 10)); // 여분 공간을 조절할 SizedBox 추가
+    }
+
+    // 리스트를 Row로 감싸서 반환
+    return Row(
+      children: buttonsWithSpacing,
+    );
+  }
+
+// Basic 버튼 style
+  ElevatedButton buildBasicButton(String language) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          selectedBasicCategory = language;
+          print(selectedBasicCategory);
+        });
+      },
+      style: buildElevatedButtonStyle(selectedBasicCategory == language),
+      child: Text(
+        language,
+        style: buildButtonTextStyle(selectedBasicCategory == language),
       ),
     );
   }
 
-  Row buildEnglishCategoryItems() {
-    return Row(
-      children: [
-        buildAcademyCard('English 1', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-        buildAcademyCard('English 2', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-        buildAcademyCard('English 3', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-        buildAcademyCard('English 4', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-      ],
-    );
-  }
-
-  Row buildJapaneseCategoryItems() {
-    return Row(
-      children: [
-        buildAcademyCard('Japanese 1', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-        buildAcademyCard('Japanese 2', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-      ],
-    );
-  }
-
-  Row buildChineseCategoryItem() {
-    return Row(
-      children: [
-        buildAcademyCard('Chinese 1', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-        buildAcademyCard('Chinese 2', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-      ],
-    );
-  }
-
-  Row buildGermanCategoryItem() {
-    return Row(
-      children: [
-        buildAcademyCard('German 1', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-        buildAcademyCard('German 2', '학원의 위치', 'assets/images/memologo_0.jpg',
-            '/login_main'),
-      ],
-    );
-  }
-
-// 과목 카드 빌더
-  Widget buildAcademyCard(
-      String title, String subTitle, String imagePath, String navigateTo) {
-    return AcademyCard(
-      title: title,
-      subTitle: subTitle,
-      imagePath: imagePath,
-      navigateTo: navigateTo,
-    );
-  }
-
-  Widget buildUserInfo() {
-    return Column(
-      children: [
-        Text.rich(
-          TextSpan(
-            text: userName,
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-            children: [
-              TextSpan(
-                text: ' 님 안녕하세요.',
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black),
-              ),
-            ],
-          ),
-        ),
-        Text('성별 : $userGender'),
-        Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
-        Text('나이 : $userAge살'),
-      ],
-    );
-  }
+//   Widget buildUserInfo() {
+//     return Column(
+//       children: [
+//         Text.rich(
+//           TextSpan(
+//             text: userName,
+//             style: TextStyle(
+//                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+//             children: [
+//               TextSpan(
+//                 text: ' 님 안녕하세요.',
+//                 style: TextStyle(
+//                     fontSize: 15,
+//                     fontWeight: FontWeight.normal,
+//                     color: Colors.black),
+//               ),
+//             ],
+//           ),
+//         ),
+//         Text('성별 : $userGender'),
+//         Text('생년월일 : $userBirthYear년 $userBirthMonth월 $userBirthDay일'),
+//         Text('나이 : $userAge살'),
+//       ],
+//     );
+//   }
 }
 
 // 과목 버튼 스타일
