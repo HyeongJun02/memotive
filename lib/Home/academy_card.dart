@@ -5,6 +5,7 @@ class AcademyCard extends StatelessWidget {
   final String? subTitle;
   final String? imagePath; // 이미지 경로
   final String? navigateTo; // 클릭 시 이동할 페이지의 경로
+  final double? sizeOfImage = 120; // 이미지 크기
 
   const AcademyCard({
     required this.title,
@@ -27,8 +28,8 @@ class AcademyCard extends StatelessWidget {
           Column(
             children: [
               Container(
-                width: 120,
-                height: 120, // 높이 조정
+                width: sizeOfImage,
+                height: sizeOfImage, // 높이 조정
                 decoration: BoxDecoration(
                   color: Colors.grey[300],
                   borderRadius: BorderRadius.circular(10),
@@ -48,11 +49,11 @@ class AcademyCard extends StatelessWidget {
                       ),
                     // 찜 아이콘 표시 부분
                     Positioned(
-                      top: 15,
-                      left: 15,
+                      top: 10,
+                      left: 10,
                       child: Icon(
                         Icons.favorite_outline,
-                        color: Colors.red,
+                        color: Colors.white,
                         size: 25,
                       ),
                     ),

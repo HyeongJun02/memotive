@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'academy_card.dart';
 
+String imageLoc = 'assets/images/example/ex_academy.jpg';
+
 // 과목 (Basic)
 Widget buildBasicItems(String selectedBasicCategory) {
   return Align(
@@ -22,14 +24,10 @@ Widget buildBasicItems(String selectedBasicCategory) {
 Row buildKoreanCategoryItems() {
   return Row(
     children: [
-      buildAcademyCard(
-          '국어 1', '학원의 위치', 'assets/images/memologo_0.jpg', '/login_main'),
-      buildAcademyCard(
-          '국어 2', '학원의 위치', 'assets/images/memologo_0.jpg', '/login_main'),
-      buildAcademyCard(
-          '국어 3', '학원의 위치', 'assets/images/memologo_0.jpg', '/login_main'),
-      buildAcademyCard(
-          '국어 4', '학원의 위치', 'assets/images/memologo_0.jpg', '/login_main'),
+      buildAcademyCard('국어 1', '학원의 위치', imageLoc, '/login_main'),
+      buildAcademyCard('국어 2', '학원의 위치', imageLoc, '/login_main'),
+      buildAcademyCard('국어 3', '학원의 위치', imageLoc, '/login_main'),
+      buildAcademyCard('국어 4', '학원의 위치', imageLoc, '/login_main'),
     ],
   );
 }
