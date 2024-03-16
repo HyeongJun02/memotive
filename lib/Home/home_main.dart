@@ -100,13 +100,13 @@ class MainPageState extends State<HomeMain> {
               const SizedBox(height: 5),
               buildPageIndicator(), // 광고 페이지 인디케이터
               const SizedBox(height: 20),
-              buildCategory('어학 (Language)', 'moreNav'), // 카테고리 - 어학
+              buildCategory('어학 (Language)', '/more_main'), // 카테고리 - 어학
               const SizedBox(height: 0),
               buildLanguageButtons(['영어', '일본어', '중국어', '독일어']), // 과목
               const SizedBox(height: 0),
               buildLanguageItems(selectedLanguageCategory), // 카드
-              const SizedBox(height: 0),
-              buildCategory('기초과목 (Basic)', 'moreNav'), // 카테고리 - 어학
+              const SizedBox(height: 20),
+              buildCategory('기초과목 (Basic)', '/login_main'), // 카테고리 - 어학
               const SizedBox(height: 0),
               buildBasicButtons(['국어', '수학', '과학탐구', '사회탐구']), // 과목
               const SizedBox(height: 0),
@@ -204,11 +204,21 @@ class MainPageState extends State<HomeMain> {
         Text(
           categoryName,
           style: TextStyle(
-              fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+            fontSize: 18,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        Text(
-          "더보기 >",
-          style: TextStyle(fontSize: 10, color: Colors.grey),
+        InkWell(
+          onTap: () {
+            // 클릭 시 네비게이터 사용
+            Navigator.pushNamed(context, moreNav);
+            print("더보기 버튼이 클릭되었습니다.");
+          },
+          child: Text(
+            "더보기 >",
+            style: TextStyle(fontSize: 10, color: Colors.grey),
+          ),
         ),
       ],
     );
