@@ -54,7 +54,7 @@ class MainPageState extends State<HomeMain> {
       backgroundColor: Colors.white,
       centerTitle: true,
       title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Image.asset(
             'assets/images/memologo_0.jpg',
@@ -62,8 +62,17 @@ class MainPageState extends State<HomeMain> {
             height: 40,
             fit: BoxFit.fitHeight,
           ),
+          Text('내 주소를 설정해주세요.'),
         ],
       ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add_alert),
+          onPressed: () {
+            print('add_alert button is clicked');
+          },
+        ),
+      ],
     );
   }
 
@@ -190,17 +199,19 @@ class MainPageState extends State<HomeMain> {
   }
 
 // 과목 버튼
-  Widget buildLanguageButtons(List<String> Subjects) {
+  Widget buildLanguageButtons(List<String> subjects) {
+    // 버튼과 여백을 함께 담을 리스트 생성
+    List<Widget> buttonsWithSpacing = [];
+
+    // 각 과목에 대한 버튼과 여백을 추가
+    for (String subject in subjects) {
+      buttonsWithSpacing.add(buildLanguageButton(subject));
+      buttonsWithSpacing.add(SizedBox(width: 10)); // 여분 공간을 조절할 SizedBox 추가
+    }
+
+    // 리스트를 Row로 감싸서 반환
     return Row(
-      children: [
-        for (String subject in Subjects)
-          Column(
-            children: [
-              buildLanguageButton(subject),
-              Container(width: 50),
-            ],
-          ),
-      ],
+      children: buttonsWithSpacing,
     );
   }
 

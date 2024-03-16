@@ -90,7 +90,7 @@ class AcademyCard extends StatelessWidget {
               ),
             ],
           ),
-          Container(width: 10)
+          Container(width: 15)
         ],
       ),
     );

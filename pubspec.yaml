@@ -67,6 +67,7 @@ dev_dependencies:
 flutter:
   assets:
     # assets 폴더 안의 내용을 쓰겠다.
+    - assets/images/example/
     - assets/images/
     - assets/json/
     - assets/json/minor/
