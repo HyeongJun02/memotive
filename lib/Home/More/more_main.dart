@@ -42,10 +42,9 @@ class MoreMain extends StatelessWidget {
       children: myTabs.map((Tab tab) {
         final String? label = tab.text;
         return Center(
-          child: Text(
-            '여기는 $label 탭입니다',
-            style: const TextStyle(fontSize: 15),
-          ),
+          child: Column(children: [
+            Text('여기는 $label 탭입니다'),
+          ]),
         );
       }).toList(),
     );
