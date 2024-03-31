@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:memotive/Home/More/more_main.dart';
+// import 'package:memotive/Home/More/more_main_bas.dart';
 import 'package:memotive/Search/search_main.dart';
+import 'Home/More/more_main.dart';
 import 'Login/login_main.dart';
 import 'Home/home_main.dart';
-import 'Test/test_page.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 
 void main() async {
@@ -31,8 +31,9 @@ class MyApp extends StatelessWidget {
         '/home_main': (context) => HomeMain(),
         '/search_main': (context) => SearchMain(),
         '/login_main': (context) => LoginMain(),
-        '/more_main': (context) => TabBarScreen(),
+        // '/more_main': (context) => TabBarScreen(),
         // '/test_page': (context) => TestPage(),
+        '/more_main': (context) => MoreMain(),
       },
     );
   }

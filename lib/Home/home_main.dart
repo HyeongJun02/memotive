@@ -106,7 +106,7 @@ class MainPageState extends State<HomeMain> {
               const SizedBox(height: 0),
               buildLanguageItems(selectedLanguageCategory), // 카드
               const SizedBox(height: 20),
-              buildCategory('기초과목 (Basic)', '/login_main'), // 카테고리 - 어학
+              buildCategory('기초과목 (Basic)', '/more_main'), // 카테고리 - 어학
               const SizedBox(height: 0),
               buildBasicButtons(['국어', '수학', '과학탐구', '사회탐구']), // 과목
               const SizedBox(height: 0),
