@@ -6,8 +6,10 @@ import 'Home/More/more_main.dart';
 import 'Login/login_main.dart';
 import 'Home/home_main.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'Search/Academy/DBlist/DBtest.dart';
 
 void main() async {
+  dbConnector(); //SQL 연결
   WidgetsFlutterBinding.ensureInitialized();
   await NaverMapSdk.instance.initialize(
       clientId: 'b37g6fxls3',

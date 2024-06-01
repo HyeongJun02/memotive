@@ -38,10 +38,27 @@ dependencies:
   # kakao_flutter_sdk: ^1.8.0 # 전체 추가
   kakao_flutter_sdk_user: ^1.8.0 # 카카오 로그인
   kakao_flutter_sdk: ^1.8.0
+  
+  #<지도>
   flutter_naver_map: ^1.2.1
+  
+  #<지역 선택>
   flutter_bloc: ^8.1.1
-  http: ^0.13.5
-  equatable: ^2.0.5
+  http: ^1.2.1
+  equatable: ^2.0.5 #지역선택 할 때 사용하는 플러그인
+  
+  #<SQL 연결 관련 서버 플러그인>
+  drift: ^2.16.0 #Drift 플러그인
+  sqlite3_flutter_libs: ^0.5.20 #SQLite 플러그인
+  path_provider: ^2.1.2 #경로 관련 기능을 제공하는 플러그인
+  path: ^1.9.0 #경로 관련 기능을 제공하는 플러그인
+  get_it: ^7.6.7 #프로젝트 전역으로 의존성 주입을 가능하게 하는 플러그인
+  dio: ^5.4.1 #네트워크 요청을 가능하게 하는 플러그인
+  provider: ^6.1.2 #상태 관리를 가능하게 하는 플러그인
+  uuid: ^4.3.3 #UUID를 생성하는 플러그인
+  sqflite: ^2.2.8
+  mysql_client: ^0.0.27
+  
   # kakao_flutter_sdk_talk: ^1.8.0 # 카카오톡 메시지, 카카오톡 소셜(프로필 가져오기, 친구 목록 가져오기)
   # kakao_flutter_sdk_share: ^1.8.0 # 카카오톡 공유
   # kakao_flutter_sdk_navi: ^1.8.0 # 카카오내비
@@ -50,13 +67,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  drift_dev: ^2.16.0 #Drift 코드 생성 기능 관련 플러그인
+  build_runner: ^2.4.8 #코드 생성 기능 제공해주는 플러그인
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   kakao_flutter_sdk_user: ^1.8.0 # 카카오 로그인
   kakao_flutter_sdk: ^1.8.0
 
