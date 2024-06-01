@@ -5,6 +5,8 @@ import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
 
 class MyMain extends StatelessWidget {
+  const MyMain({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

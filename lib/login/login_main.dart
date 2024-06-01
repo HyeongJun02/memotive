@@ -108,12 +108,12 @@ class LoginMain extends StatelessWidget {
                           minWidth: 100.0,
                           height: 50.0,
                           child: OutlinedButton(
-                            child: const Text('로그인'),
                             style: OutlinedButton.styleFrom(),
                             onPressed: () {
                               userName = '안녕';
                               Navigator.pop(context);
                             },
+                            child: const Text('로그인'),
                           )
                           // ElevatedButton(
                           //   child: const Text('로그인'),

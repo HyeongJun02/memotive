@@ -3,6 +3,8 @@ import 'package:memotive/bottom_navigation_bar.dart';
 import 'package:memotive/navigation_service.dart';
 
 class CommunityMain extends StatelessWidget {
+  const CommunityMain({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
